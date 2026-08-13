@@ -1,91 +1,83 @@
 //
 // Горизонтальные ленты: типы объектов и оборудование
 //
-// В макете обе строки шире контейнера (2060 при контенте 1320), то есть
-// намеренно уезжают за правый край. Реализуем прокруткой, стартующей
-// от левой границы контейнера.
+// В макете обе ленты идут от левого края экрана (первая карточка на x≈0),
+// а не от границы контейнера, и уезжают за правый край: ряд объектов
+// заканчивается на 2050 при ширине окна 1920. Поэтому лента —
+// full-bleed с горизонтальной прокруткой, без отступа под контейнер.
 //
-
-// Отступ слева, равный полю контейнера — лента начинается там же,
-// где текст, но уходит вправо за пределы экрана.
-.rail-offset() {
-    padding-left: calc(~"(100vw - @{content-xxl}) / 2");
-    padding-right: calc(~"(100vw - @{content-xxl}) / 2");
-
-    .to-xxl({
-        padding-left: calc(~"(100vw - @{content-xl}) / 2");
-        padding-right: calc(~"(100vw - @{content-xl}) / 2");
-    });
-
-    .to-lg({
-        padding-left: 0;
-        padding-right: 0;
-    });
-
-    .to-md({
-        padding-left: @container-pad-mob;
-        padding-right: @container-pad-mob;
-    });
-}
 
 .residence {
 
     // ─── Типы объектов ───────────────────────────────────────────────────────
     &__objects-rail {
         .scroll-rail(@gap-sm);
-        .rail-offset();
         .full-bleed();
-        padding-bottom: 14px; // место под тень карточек
+        padding: 4px 0 14px 4px; // место под тень карточек
     }
 
+    // Карточка: фотография на всю площадь, заголовок лежит поверх неё
+    // в левом верхнем углу — так в макете, а не подписью сверху.
     &__object {
+        position: relative;
         width: 277px;
-        display: flex;
-        flex-direction: column;
+        border-radius: @radius;
+        overflow: hidden;
+        box-shadow: @shadow-card;
+        .ratio(277, 364);
 
-        .to-md({ width: 220px; });
+        .to-md({ width: 240px; });
+
+        &-photo {
+            .cover-img();
+        }
 
         &-title {
+            position: absolute;
+            z-index: 2;
+            top: 36px;
+            left: 22px;
+            width: 225px;
+            margin: 0;
             .font(@fs-card, @lh-card, @fw-bold);
             color: @dark-blue;
-            margin: 0 0 @gap-xs;
-            min-height: @lh-card * 2; // выравниваем низ картинок при разной длине заголовка
 
             .to-md({
-                .font(@fs-body-m, @lh-body-m, @fw-bold);
-                min-height: @lh-body-m * 2;
+                top: 24px;
+                left: 18px;
+                width: auto;
+                right: 18px;
+                .font(@fs-card-m, @lh-card-m, @fw-bold);
             });
         }
 
+        // Подпись под заголовком у последней карточки
         &-note {
+            position: absolute;
+            z-index: 2;
+            top: 108px;
+            left: 22px;
+            width: 190px;
+            margin: 0;
             .font(@fs-body, @lh-body, @fw-bold);
             color: @dark-blue;
-            margin: -6px 0 @gap-xs;
 
             .to-md({
+                top: 78px;
+                left: 18px;
+                right: 18px;
+                width: auto;
                 .font(12px, 16px, @fw-bold);
             });
-        }
-
-        &-media {
-            margin-top: auto;
-            border-radius: @radius;
-            overflow: hidden;
-            box-shadow: @shadow-card;
-            .ratio(277, 364);
-
-            img {
-                .cover-img();
-            }
         }
     }
 
     // ─── Лента оборудования ──────────────────────────────────────────────────
+    // Тоже от левого края экрана, карточки без подписей.
     &__scope-rail {
         .scroll-rail(@gap-sm);
-        .rail-offset();
         .full-bleed();
-        padding-bottom: 14px;
+        padding: 4px 0 14px 0;
     }
 
     &__scope-item {
@@ -95,7 +87,7 @@
         box-shadow: @shadow-card;
         .ratio(277, 364);
 
-        .to-md({ width: 220px; });
+        .to-md({ width: 240px; });
 
         img {
             .cover-img();

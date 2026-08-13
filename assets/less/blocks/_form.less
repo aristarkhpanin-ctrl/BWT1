@@ -70,8 +70,11 @@
 
         }
 
+        // Резервируем высоту виджета Yandex SmartCaptcha (на проде 118px),
+        // иначе после его подгрузки страница дёргается.
         &-captcha {
             min-width: 0;
+            min-height: 118px;
             margin-top: 6px;
         }
 

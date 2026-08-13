@@ -10,11 +10,10 @@
             margin: 0 auto;
             border-radius: @radius;
             overflow: hidden;
+            .ratio(901, 506);
 
             img {
-                display: block;
-                width: 100%;
-                height: auto;
+                .cover-img();
             }
         }
 
@@ -42,13 +41,21 @@
             grid-template-columns: repeat(5, minmax(0, 1fr));
             gap: @gap-sm;
             margin-top: @gap;
+            width: 110.98%;      // 1465 при контенте 1320
+            margin-left: -5.49%;
 
-            .to-lg({ grid-template-columns: repeat(3, minmax(0, 1fr)); });
+            .to-lg({
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                width: 100%;
+                margin-left: 0;
+            });
 
             .to-md({
                 .scroll-rail(@gap-xs);
                 display: flex;
                 margin-top: @gap-sm;
+                width: 100%;
+                margin-left: 0;
             });
 
             &-item {
@@ -81,10 +88,10 @@
 
             .to-md({ margin-top: @gap-sm; });
 
+            .ratio(901, 506);
+
             img {
-                display: block;
-                width: 100%;
-                height: auto;
+                .cover-img();
             }
 
             iframe {

@@ -1,33 +1,42 @@
 //
 // Двухколоночные блоки: «Дом высокого класса», «Технологии», «Где важны», CTA
 //
-// На сайте для такого паттерна есть two-cols (two-cols.min.css), но там
-// жёстко зашиты свои пропорции и отступы, не совпадающие с макетом,
-// поэтому оставляем свою сетку, а классы кнопок и ссылок берём готовые.
+// Пропорции сняты из макета по координатам нод, а не на глаз. В двух блоках
+// картинка намеренно шире контейнера и уходит за правый край экрана —
+// это не ошибка вёрстки, так нарисовано.
 //
 
 .residence {
 
     // ─── «Дом высокого класса требует…» ──────────────────────────────────────
-    // В макете картинка выходит за правый край контейнера (1172 при
-    // контенте 1320, начинается с x=782 относительно страницы).
+    // Макет: секция 1920×686 на всю ширину; текст 596 от левого края контента,
+    // картинка 1172×662 с x=782, то есть заходит на текст и вылезает
+    // за правый край экрана на 34px.
     &__split {
+        .full-bleed();
+
         &-inner {
             display: grid;
-            grid-template-columns: minmax(0, 596fr) minmax(0, 700fr);
+            grid-template-columns: minmax(0, 596fr) minmax(0, 1172fr);
             align-items: center;
-            gap: 24px;
+            padding-left: calc(~"(100vw - @{content-xxl}) / 2");
+
+            .to-xxl({
+                padding-left: calc(~"(100vw - @{content-xl}) / 2");
+            });
+
+            .to-lg({ padding-left: @container-pad-mob; });
 
             .to-md({
                 grid-template-columns: 1fr;
+                padding: 0 @container-pad-mob;
                 gap: @gap-sm;
             });
         }
 
         &-content {
-            max-width: 596px;
-
-            .to-md({ max-width: none; });
+            position: relative;
+            z-index: 2;
         }
 
         &-text {
@@ -41,23 +50,31 @@
         }
 
         &-media {
+            // отрицательный сдвиг повторяет наезд картинки на текст из макета
+            margin-left: -8%;
+            .ratio(1172, 662);
+
             img {
-                display: block;
-                width: 100%;
-                height: auto;
+                .cover-img();
             }
+
+            .to-md({
+                margin-left: 0;
+                aspect-ratio: 370 / 250;
+            });
         }
     }
 
     // ─── «Технологии водоподготовки BWT» ─────────────────────────────────────
+    // Макет: карточка с картинкой 601×548 у левого края контента,
+    // текстовая колонка 534 через зазор 79. Справа остаётся 106 воздуха,
+    // поэтому колонки заданы в процентах, а не во fr.
     &__tech {
         &-inner {
             display: grid;
-            grid-template-columns: minmax(0, 601fr) minmax(0, 534fr);
+            grid-template-columns: 45.53% 40.45%;
+            gap: 5.98%;
             align-items: center;
-            gap: 80px;
-
-            .to-xxl({ gap: 50px; });
 
             .to-md({
                 grid-template-columns: 1fr;
@@ -66,15 +83,21 @@
         }
 
         &-media {
+            padding: 21px 23px;
             border-radius: @radius;
-            overflow: hidden;
+            background: @white;
             box-shadow: @shadow-tech;
+            .ratio(601, 548);
 
             img {
-                display: block;
-                width: 100%;
-                height: auto;
+                .cover-img();
+                border-radius: 6px;
             }
+
+            .to-md({
+                padding: 12px;
+                aspect-ratio: 370 / 320;
+            });
         }
 
         &-lead {
@@ -102,15 +125,25 @@
     }
 
     // ─── «Решения BWT используются там, где важны» ───────────────────────────
+    // Макет: секция 1920×789 на всю ширину; текст 452 у левого края контента,
+    // картинка 1269×789 занимает всю высоту секции и уходит за правый край.
     &__usage {
         &-inner {
             display: grid;
-            grid-template-columns: minmax(0, 452fr) minmax(0, 868fr);
+            grid-template-columns: minmax(0, 452fr) minmax(0, 1269fr);
             align-items: center;
-            gap: 40px;
+            padding-left: calc(~"(100vw - @{container-xxl}) / 2");
+            .full-bleed();
+
+            .to-xxl({
+                padding-left: calc(~"(100vw - @{container-xl}) / 2");
+            });
+
+            .to-lg({ padding-left: @container-pad-mob; });
 
             .to-md({
                 grid-template-columns: 1fr;
+                padding: 0 @container-pad-mob;
                 gap: @gap-sm;
             });
         }
@@ -132,11 +165,13 @@
         }
 
         &-media {
+            .ratio(1269, 789);
+
             img {
-                display: block;
-                width: 100%;
-                height: auto;
+                .cover-img();
             }
+
+            .to-md({ aspect-ratio: 370 / 250; });
         }
 
         &-cta {
@@ -149,10 +184,12 @@
     }
 
     // ─── Финальный CTA ───────────────────────────────────────────────────────
+    // Макет: карточка 1320×423, картинка 795 прижата к правому краю,
+    // текстовая колонка 525.
     &__cta {
         &-card {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 795fr);
+            grid-template-columns: minmax(0, 525fr) minmax(0, 795fr);
             align-items: stretch;
             background: @surface;
             border-radius: @radius;
@@ -164,20 +201,21 @@
         }
 
         &-content {
-            padding: 60px 50px;
+            padding: 20px;
             align-self: center;
 
-            .to-xxl({ padding: 40px 30px; });
-            .to-md({  padding: @gap-sm; });
+            .to-md({ padding: @gap-sm; });
         }
 
         &-text {
             .font(@fs-body, @lh-body, @fw-regular);
             margin: 20px 0 24px;
+            max-width: 377px; // ширина абзаца из макета
 
             .to-md({
                 .font(@fs-body-m, @lh-body-m, @fw-regular);
                 margin: 10px 0 @gap-sm;
+                max-width: none;
             });
         }
 
@@ -188,9 +226,7 @@
                 .cover-img();
             }
 
-            .to-md({
-                aspect-ratio: 370 / 208;
-            });
+            .to-md({ aspect-ratio: 370 / 208; });
         }
     }
 }
