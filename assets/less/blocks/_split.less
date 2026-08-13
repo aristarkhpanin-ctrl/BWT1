@@ -1,0 +1,196 @@
+//
+// Двухколоночные блоки: «Дом высокого класса», «Технологии», «Где важны», CTA
+//
+// На сайте для такого паттерна есть two-cols (two-cols.min.css), но там
+// жёстко зашиты свои пропорции и отступы, не совпадающие с макетом,
+// поэтому оставляем свою сетку, а классы кнопок и ссылок берём готовые.
+//
+
+.residence {
+
+    // ─── «Дом высокого класса требует…» ──────────────────────────────────────
+    // В макете картинка выходит за правый край контейнера (1172 при
+    // контенте 1320, начинается с x=782 относительно страницы).
+    &__split {
+        &-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 596fr) minmax(0, 700fr);
+            align-items: center;
+            gap: 24px;
+
+            .to-md({
+                grid-template-columns: 1fr;
+                gap: @gap-sm;
+            });
+        }
+
+        &-content {
+            max-width: 596px;
+
+            .to-md({ max-width: none; });
+        }
+
+        &-text {
+            .font(@fs-body, @lh-body, @fw-regular);
+            margin: 12px 0 24px;
+
+            .to-md({
+                .font(@fs-body-m, @lh-body-m, @fw-regular);
+                margin: 10px 0 @gap-sm;
+            });
+        }
+
+        &-media {
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    // ─── «Технологии водоподготовки BWT» ─────────────────────────────────────
+    &__tech {
+        &-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 601fr) minmax(0, 534fr);
+            align-items: center;
+            gap: 80px;
+
+            .to-xxl({ gap: 50px; });
+
+            .to-md({
+                grid-template-columns: 1fr;
+                gap: @gap-sm;
+            });
+        }
+
+        &-media {
+            border-radius: @radius;
+            overflow: hidden;
+            box-shadow: @shadow-tech;
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        &-lead {
+            margin-top: 12px;
+        }
+
+        &-text {
+            .font(@fs-body, @lh-body, @fw-regular);
+            margin: 24px 0;
+
+            b {
+                font-weight: @fw-bold;
+            }
+
+            .to-md({
+                .font(@fs-body-m, @lh-body-m, @fw-regular);
+                margin: @gap-sm 0;
+            });
+        }
+    }
+
+    // Розовое слово BWT в заголовке
+    &__accent {
+        color: var(--bwt-pink, @pink);
+    }
+
+    // ─── «Решения BWT используются там, где важны» ───────────────────────────
+    &__usage {
+        &-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 452fr) minmax(0, 868fr);
+            align-items: center;
+            gap: 40px;
+
+            .to-md({
+                grid-template-columns: 1fr;
+                gap: @gap-sm;
+            });
+        }
+
+        &-list {
+            margin: 24px 0 0;
+            padding-left: 1.2em;
+            list-style: decimal;
+
+            li {
+                .font(@fs-body, @lh-body, @fw-light);
+                text-transform: uppercase;
+                margin-bottom: 10px;
+
+                .to-md({
+                    .font(@fs-body-m, @lh-body-m, @fw-light);
+                });
+            }
+        }
+
+        &-media {
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        &-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: @gap;
+
+            .to-md({ margin-top: @gap-sm; });
+        }
+    }
+
+    // ─── Финальный CTA ───────────────────────────────────────────────────────
+    &__cta {
+        &-card {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 795fr);
+            align-items: stretch;
+            background: @surface;
+            border-radius: @radius;
+            overflow: hidden;
+
+            .to-md({
+                grid-template-columns: 1fr;
+            });
+        }
+
+        &-content {
+            padding: 60px 50px;
+            align-self: center;
+
+            .to-xxl({ padding: 40px 30px; });
+            .to-md({  padding: @gap-sm; });
+        }
+
+        &-text {
+            .font(@fs-body, @lh-body, @fw-regular);
+            margin: 20px 0 24px;
+
+            .to-md({
+                .font(@fs-body-m, @lh-body-m, @fw-regular);
+                margin: 10px 0 @gap-sm;
+            });
+        }
+
+        &-media {
+            .ratio(795, 423);
+
+            img {
+                .cover-img();
+            }
+
+            .to-md({
+                aspect-ratio: 370 / 208;
+            });
+        }
+    }
+}

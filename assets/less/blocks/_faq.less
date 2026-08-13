@@ -1,0 +1,131 @@
+//
+// FAQ-аккордеон
+//
+// Готового аккордеона на сайте нет (в template_styles.css только
+// `.onepipe-faq h2`), поэтому блок написан с нуля. По умолчанию все
+// пункты закрыты, раскрываются по клику — как договорились.
+// В макете FAQ отрисован только под 1440 и со всеми раскрытыми пунктами;
+// состояния для 1920 и мобильного выведены по общей логике страницы.
+//
+
+.residence {
+
+    &__faq {
+        &-list {
+            border-top: 1px solid fade(@dark-blue, 18%);
+        }
+
+        &-item {
+            border-bottom: 1px solid fade(@dark-blue, 18%);
+        }
+
+        &-heading {
+            margin: 0;
+        }
+
+        &-question {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: @gap-sm;
+            width: 100%;
+            padding: 20px 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+            color: var(--bwt-pink, @pink);
+            .font(@fs-card-sm, @lh-card-sm, @fw-regular);
+            transition: color @ease;
+
+            &:hover {
+                color: darken(@pink, 12%);
+            }
+
+            .to-md({
+                padding: 16px 0;
+                .font(@fs-body-m + 2px, @lh-card-m, @fw-regular);
+            });
+        }
+
+        // Плюс, который превращается в минус
+        &-icon {
+            position: relative;
+            flex: 0 0 auto;
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                background: @dark-blue;
+                transition: transform @ease, opacity @ease;
+            }
+
+            // горизонтальная палочка
+            &::before {
+                width: 20px;
+                height: 1.5px;
+                transform: translate(-50%, -50%);
+            }
+
+            // вертикальная — исчезает при раскрытии
+            &::after {
+                width: 1.5px;
+                height: 20px;
+                transform: translate(-50%, -50%);
+            }
+
+            .residence__faq-question[aria-expanded='true'] & {
+                &::after {
+                    transform: translate(-50%, -50%) rotate(90deg);
+                    opacity: 0;
+                }
+            }
+        }
+
+        // Панель: анимируем через grid-template-rows, чтобы обойтись
+        // без замера высоты в JS и не ломать resize.
+        &-panel {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows @ease;
+
+            &[hidden] {
+                display: none;
+            }
+
+            &.is-open {
+                grid-template-rows: 1fr;
+            }
+        }
+
+        &-body {
+            overflow: hidden;
+            min-height: 0;
+            color: @dark-blue;
+            .font(@fs-card-sm, @lh-card-sm, @fw-regular);
+
+            > p {
+                margin: 0 0 16px;
+
+                &:last-child {
+                    margin-bottom: 20px;
+                }
+            }
+
+            b {
+                font-weight: @fw-bold;
+            }
+
+            .to-md({
+                .font(@fs-body-m, @lh-body-m, @fw-regular);
+            });
+        }
+    }
+}

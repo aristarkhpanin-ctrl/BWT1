@@ -1,0 +1,120 @@
+//
+// Слайдер пространств «Не просто чистая вода»
+//
+// Слайд 1320×634 с подписью по центру снизу. Стрелки — круглые,
+// полупрозрачные, с блюром (как в макете: 64px, backdrop-blur 6).
+// Карусель на Slick, который уже подключён на сайте.
+//
+
+.residence {
+
+    &__zones-slider {
+        border-radius: @radius;
+        overflow: hidden;
+
+        // До инициализации Slick показываем только первый слайд,
+        // чтобы не было «простыни» из девяти картинок.
+        &:not(.slick-initialized) .residence__zone + .residence__zone {
+            display: none;
+        }
+    }
+
+    &__zone {
+        position: relative;
+        .ratio(1320, 634);
+
+        .to-md({ aspect-ratio: 1 / 1; });
+
+        img {
+            .cover-img();
+        }
+
+        &-caption {
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            right: 0;
+            bottom: 11.5%;
+            text-align: center;
+            color: @white;
+            .font(@fs-h2, @lh-h2, @fw-light);
+            letter-spacing: .11em;
+            text-shadow: 0 4px 4px rgba(0, 0, 0, .25), 1px -3px 10px rgba(0, 23, 75, .2);
+
+            .to-md({
+                bottom: 11%;
+                .font(@fs-h2-m, @lh-h2-m, @fw-light);
+            });
+        }
+    }
+
+    // ─── Стрелки Slick ───────────────────────────────────────────────────────
+    // Переопределяем оформление slick-theme под макет.
+    &__zones-slider {
+        .slick-prev,
+        .slick-next {
+            width: 64px;
+            height: 64px;
+            z-index: 3;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .18);
+            backdrop-filter: blur(6px);
+            box-shadow: @shadow-arrow;
+            transition: background @ease;
+
+            &:hover,
+            &:focus {
+                background: rgba(255, 255, 255, .35);
+            }
+
+            &::before {
+                content: '';
+                display: block;
+                width: 14px;
+                height: 14px;
+                margin: 0 auto;
+                border-top: 2px solid @white;
+                border-right: 2px solid @white;
+                opacity: 1;
+            }
+
+            .to-md({
+                width: 38px;
+                height: 38px;
+
+                &::before { width: 9px; height: 9px; }
+            });
+        }
+
+        .slick-prev {
+            left: 30px;
+
+            &::before { transform: rotate(-135deg); }
+
+            .to-md({ left: 12px; });
+        }
+
+        .slick-next {
+            right: 30px;
+
+            &::before { transform: rotate(45deg); }
+
+            .to-md({ right: 12px; });
+        }
+
+        .slick-dots {
+            bottom: 14px;
+
+            li button::before {
+                color: @white;
+                opacity: .5;
+                font-size: 8px;
+            }
+
+            li.slick-active button::before {
+                color: @white;
+                opacity: 1;
+            }
+        }
+    }
+}

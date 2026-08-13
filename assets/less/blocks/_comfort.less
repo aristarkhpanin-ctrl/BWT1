@@ -1,0 +1,95 @@
+//
+// «Комфорт, который не требует внимания» — 6 карточек в двух рядах
+//
+// В макете ряды зеркальные: 630 / 307 / 307 в первом и 307 / 307 / 630
+// во втором, зазор 38px (1320 − 630 − 307 − 307 = 76 на два промежутка).
+// Один grid обе раскладки не держит, поэтому ряды разведены на два блока —
+// так пропорции попадают в макет точно, без подгонки колонок.
+//
+
+.residence {
+
+    &__comfort {
+
+        &-row {
+            display: grid;
+            gap: @gap-sm 38px;
+
+            // Широкая карточка слева
+            &_first {
+                grid-template-columns: minmax(0, 630fr) minmax(0, 307fr) minmax(0, 307fr);
+            }
+
+            // Широкая карточка справа
+            &_second {
+                grid-template-columns: minmax(0, 307fr) minmax(0, 307fr) minmax(0, 630fr);
+                margin-top: 47px;
+                padding-top: 47px;
+                border-top: 1px solid fade(@dark-blue, 25%);
+            }
+
+            // Мобильный сброс идёт последним: у модификаторов та же
+            // специфичность, и объявленный раньше медиазапрос они бы перебили.
+            .to-md({
+                &,
+                &_first,
+                &_second {
+                    grid-template-columns: 1fr;
+                    gap: @gap-sm;
+                }
+
+                &_second {
+                    margin-top: @gap-sm;
+                    padding-top: @gap-sm;
+                }
+            });
+        }
+
+        &-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-media {
+            border-radius: @radius;
+            overflow: hidden;
+            margin-bottom: 16px;
+            .ratio(307, 438);
+
+            img {
+                .cover-img();
+            }
+
+            .residence__comfort-card_wide & {
+                .ratio(630, 438);
+            }
+
+            .to-md({
+                aspect-ratio: 370 / 290;
+
+                .residence__comfort-card_wide & {
+                    aspect-ratio: 370 / 290;
+                }
+            });
+        }
+
+        &-title {
+            .font(@fs-card-sm, @lh-card-sm, @fw-bold);
+            color: @dark-blue;
+            margin: 0 0 8px;
+
+            .to-md({
+                .font(@fs-card-m, @lh-card-m, @fw-bold);
+            });
+        }
+
+        &-text {
+            .font(@fs-body, @lh-body, @fw-light);
+            color: @dark-blue;
+
+            .to-md({
+                .font(@fs-body-m, @lh-body-m, @fw-light);
+            });
+        }
+    }
+}

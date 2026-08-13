@@ -1,0 +1,117 @@
+//
+// «Частые проблемы» и «Инженерный подход» (bento)
+//
+
+.residence {
+
+    // ─── Частые проблемы ─────────────────────────────────────────────────────
+    // Сетка 3×2, карточка 418×94 с тенью и радиусом 10.
+    &__problems-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: @gap-sm;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .to-lg({ grid-template-columns: repeat(2, minmax(0, 1fr)); });
+        .to-md({ grid-template-columns: 1fr; gap: @gap-xs; });
+    }
+
+    &__problem {
+        display: flex;
+        align-items: center;
+        min-height: 94px;
+        padding: 16px 20px;
+        border-radius: @radius;
+        background: @white;
+        box-shadow: @shadow-card;
+        color: @dark-blue-alt;
+        .font(@fs-body, @lh-body, @fw-regular);
+
+        b {
+            font-weight: @fw-bold;
+        }
+
+        .to-md({
+            min-height: 65px;
+            padding: 12px 16px;
+            .font(@fs-body-m, @lh-body-m, @fw-regular);
+        });
+    }
+
+    // ─── Инженерный подход: bento 2×2 ────────────────────────────────────────
+    // Левая колонка — высокая плитка сверху, низкая снизу; правая наоборот.
+    // Пропорции взяты из макета: 643×633 и 643×341.
+    &__approach {
+        &-sub {
+            .font(@fs-lead, @lh-lead, @fw-bold);
+            color: @dark-blue;
+            margin-top: 16px;
+
+            .to-md({
+                .font(@fs-lead-m, @lh-lead-m, @fw-bold);
+            });
+        }
+
+        &-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+
+            .to-md({
+                grid-template-columns: 1fr;
+                gap: @gap-sm;
+            });
+        }
+
+        &-card {
+            position: relative;
+            margin: 0;
+            border-radius: @radius;
+            overflow: hidden;
+            color: @white;
+            .photo-overlay(rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+
+            img {
+                .cover-img();
+            }
+
+            figcaption {
+                position: absolute;
+                z-index: 2;
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                .font(@fs-card, @lh-card, @fw-bold);
+
+                .to-md({
+                    left: 16px;
+                    right: 16px;
+                    bottom: 16px;
+                    .font(@fs-body-m, @lh-body-m, @fw-bold);
+                });
+            }
+
+            &_tall  { .ratio(643, 633); }
+            &_short { .ratio(643, 341); }
+
+            .to-md({
+                &_tall,
+                &_short { aspect-ratio: 370 / 290; }
+            });
+        }
+    }
+}
+
+// Колонки bento: в макете правая нижняя плитка начинается сразу под
+// верхней, а не по общей строке grid, поэтому колонки независимые.
+.residence__approach-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (max-width: 767.98px) {
+        gap: 20px;
+    }
+}

@@ -1,0 +1,73 @@
+//
+// Полноэкранные баннеры с текстом поверх фото
+//
+
+.residence {
+
+    &__banner {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        color: @white;
+        .full-bleed();
+        .photo-overlay(rgba(0, 0, 0, .65), rgba(0, 0, 0, 0));
+
+        &-media {
+            position: absolute;
+            inset: 0;
+
+            img {
+                .cover-img();
+            }
+        }
+
+        &-inner {
+            position: relative;
+            z-index: 2;
+            padding-bottom: 90px;
+
+            .to-md({ padding-bottom: 40px; });
+        }
+
+        &-title {
+            .font(@fs-h2, @lh-h2, @fw-bold);
+            margin: 0;
+            max-width: 795px; // ширина текстового блока из макета
+
+            .to-md({
+                .font(@fs-h2-m, @lh-h2-m, @fw-bold);
+                max-width: none;
+            });
+        }
+
+        &-text {
+            .font(@fs-body, @lh-body, @fw-regular);
+            margin-top: 12px;
+            max-width: 795px;
+
+            .to-md({
+                .font(@fs-body-m, @lh-body-m, @fw-regular);
+                max-width: none;
+            });
+        }
+
+        // Усадьба зимой — 1920×900
+        &_manor {
+            height: 900px;
+
+            .to-xxl({ height: 760px; });
+            .to-lg({  height: 620px; });
+            .to-md({  height: 543px; });
+        }
+
+        // Вилла в сумерках — 1920×810, только заголовок
+        &_dusk {
+            height: 810px;
+
+            .to-xxl({ height: 700px; });
+            .to-lg({  height: 580px; });
+            .to-md({  height: 543px; });
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "bwt-residence-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Лендинг «Системы водоподготовки BWT для резиденций, вилл с бассейнами и SPA» — вёрстка по макету Figma",
+  "scripts": {
+    "build": "lessc --source-map assets/less/residence.less assets/css/residence.css",
+    "watch": "less-watch-compiler assets/less assets/css residence.less",
+    "serve": "http-server -p 8080 -c-1 ."
+  },
+  "devDependencies": {
+    "less": "^4.2.0"
+  }
+}

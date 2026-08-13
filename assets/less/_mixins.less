@@ -1,0 +1,105 @@
+//
+// Миксины
+//
+
+// ─── Медиазапросы ────────────────────────────────────────────────────────────
+// Пишем mobile-last: базовые стили — десктоп 1920, дальше сужаем.
+// Это повторяет логику uikit сайта, где .container сначала задаётся для
+// больших ширин, а потом переопределяется вниз.
+
+.up-xxl(@rules)  { @media (min-width: @bp-xxl)          { @rules(); } }  // ≥1460 — макет 1920
+.to-xxl(@rules)  { @media (max-width: (@bp-xxl - .02px)) { @rules(); } } // <1460 — макет 1440
+.to-xl(@rules)   { @media (max-width: (@bp-xl  - .02px)) { @rules(); } } // <1200
+.to-lg(@rules)   { @media (max-width: (@bp-lg  - .02px)) { @rules(); } } // <992 — резина
+.to-md(@rules)   { @media (max-width: (@bp-md  - .02px)) { @rules(); } } // <768 — макет mob
+.up-md(@rules)   { @media (min-width: @bp-md)            { @rules(); } }
+.up-lg(@rules)   { @media (min-width: @bp-lg)            { @rules(); } }
+
+// ─── Типографика ─────────────────────────────────────────────────────────────
+.font(@size; @lh; @weight: @fw-regular) {
+    font-size: @size;
+    line-height: @lh;
+    font-weight: @weight;
+}
+
+// Заголовок секции — центрированный, как в большинстве блоков макета
+.section-title() {
+    .font(@fs-h2, @lh-h2, @fw-bold);
+    color: @dark-blue;
+    margin: 0;
+
+    .to-md({
+        .font(@fs-h2-m, @lh-h2-m, @fw-bold);
+    });
+}
+
+.section-lead() {
+    .font(@fs-lead, @lh-lead, @fw-regular);
+    color: @dark-blue;
+    margin: 0;
+
+    .to-md({
+        .font(@fs-lead-m, @lh-lead-m, @fw-regular);
+    });
+}
+
+// ─── Раскладка ───────────────────────────────────────────────────────────────
+.cover-img() {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+// Фикс пропорций. aspect-ratio поддержан во всех актуальных браузерах
+// с 2021 года; padding-hack не добавляем — он конфликтовал бы с
+// псевдоэлементами оверлеев и подписей внутри тех же блоков.
+.ratio(@w; @h) {
+    aspect-ratio: ~"@{w} / @{h}";
+}
+
+// Полноэкранная секция: растягиваем за пределы .container на всю ширину окна
+.full-bleed() {
+    width: 100vw;
+    margin-left: calc(~"50% - 50vw");
+    margin-right: calc(~"50% - 50vw");
+}
+
+// Тёмный оверлей поверх фото, чтобы белый текст читался
+.photo-overlay(@from: rgba(0, 0, 0, .55); @to: rgba(0, 0, 0, .05)) {
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, @from, @to);
+        pointer-events: none;
+    }
+}
+
+// Горизонтальная лента с прокруткой — так ведут себя ряды карточек,
+// которые в макете шире вьюпорта (2060px при контейнере 1320)
+// Без scroll-snap намеренно: при `scroll-snap-type: x mandatory` браузер
+// сразу подтягивает первую карточку к краю скроллпорта и съедает
+// padding-left, которым лента выравнивается по контейнеру.
+.scroll-rail(@gap: @gap-sm) {
+    display: flex;
+    gap: @gap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { height: 0; }
+    > * { flex: 0 0 auto; }
+}
+
+.visually-hidden() {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}

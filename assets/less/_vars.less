@@ -1,0 +1,93 @@
+//
+// Переменные лендинга «Системы водоподготовки BWT для резиденций»
+//
+// Значения не выдуманы: цвета и брейкпоинты взяты из боевых стилей bwt.ru
+// (local/templates/bwt_2023_general/template_styles.css и
+//  local/lib/css/2020/uikit/uikit.min.css), размеры — из макета Figma.
+//
+
+// ─── Цвет ────────────────────────────────────────────────────────────────────
+// На сайте объявлены как CSS-переменные --bwt-dark-blue / --bwt-pink.
+// Дублируем в LESS, чтобы можно было считать (darken/fade), но в вывод
+// стараемся отдавать var(...) там, где это не мешает.
+@dark-blue:      #00174B; // --bwt-dark-blue, основной текст и заливки
+@dark-blue-alt:  #001F47; // текст в карточках «частые проблемы»
+@pink:           #FF88BD; // --bwt-pink, акцент и CTA
+@white:          #FFFFFF;
+@muted:          #B2BABD; // плейсхолдеры полей формы
+@surface:        #F3F6FA; // подложка финального CTA
+@card-dark-1:    #1B263F; // градиент карточки этапов
+@card-dark-2:    #000B22;
+
+// ─── Типографика ─────────────────────────────────────────────────────────────
+// Семейство «Cyr» объявлено в template_styles.css, файлы лежат в
+// /local/lib/fonts/Cyr/. Класс-переключатель — .newFontCyr.
+@font: 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+
+@fw-light:   300;
+@fw-regular: 400;
+@fw-bold:    700;
+
+// Шкала из макета: размер / интерлиньяж
+@fs-h1:        32px;  @lh-h1:        42px;
+@fs-h1-sub:    24px;  @lh-h1-sub:    31px;
+@fs-h2:        28px;  @lh-h2:        36px;
+@fs-h2-tight:  28px;  @lh-h2-tight:  31px;
+@fs-lead:      24px;  @lh-lead:      31px;
+@fs-card:      20px;  @lh-card:      26px;
+@fs-card-sm:   18px;  @lh-card-sm:   23px;
+@fs-body:      16px;  @lh-body:      21px;
+@fs-body-wide: 16px;  @lh-body-wide: 24px;
+@fs-fine:      11px;  @lh-fine:      14px;
+
+// Мобильная шкала (по макету mob 410)
+@fs-h1-m:      18px;  @lh-h1-m:      24px;
+@fs-h1-sub-m:  14px;  @lh-h1-sub-m:  19px;
+@fs-h2-m:      18px;  @lh-h2-m:      24px;
+@fs-lead-m:    16px;  @lh-lead-m:    21px;
+@fs-card-m:    18px;  @lh-card-m:    23px;
+@fs-body-m:    14px;  @lh-body-m:    19px;
+
+// ─── Брейкпоинты ─────────────────────────────────────────────────────────────
+// Ровно те, что в uikit.min.css сайта. Ниже 992 контейнер уходит в резину,
+// ниже 768 получает боковой паддинг 20px.
+@bp-sm:  576px;
+@bp-md:  768px;
+@bp-lg:  992px;
+@bp-xl:  1200px;
+@bp-xxl: 1460px;   // на этой точке контейнер становится 1340 — макет 1920
+
+// ─── Сетка ───────────────────────────────────────────────────────────────────
+// Совпадает с .container из uikit: 1170 на xl, 1340 на xxl, паддинг 10.
+@container-xl:      1170px;
+@container-xxl:     1340px;
+@container-pad:     10px;
+@container-pad-mob: 20px;
+
+// Ширина контента внутри контейнера (минус паддинги) — те самые 1150 / 1320,
+// по которым нарисованы макеты 1440 и 1920.
+@content-xl:  @container-xl  - @container-pad * 2;   // 1150
+@content-xxl: @container-xxl - @container-pad * 2;   // 1320
+
+// ─── Ритм ────────────────────────────────────────────────────────────────────
+@section-gap:     60px;  // вертикальный gap между секциями в макете 1920/1440
+@section-gap-mob: 34px;  // в макете mob
+@gap:             30px;
+@gap-sm:          20px;
+@gap-xs:          10px;
+@gap-mob:         20px;
+
+// ─── Прочее ──────────────────────────────────────────────────────────────────
+@radius:       10px;  // доминирующий радиус в макете (44 использования)
+@radius-sm:     8px;  // кнопки
+@radius-pill:  50px;
+@ease:         .3s;   // совпадает с transition кнопок на сайте
+
+// ─── Тени ────────────────────────────────────────────────────────────────────
+// Сняты из макета. Кнопочная совпадает с .btn на боевом сайте
+// (uikit.min.css: box-shadow: 0 2px 4px rgba(0,93,143,.25)) — ещё одно
+// подтверждение, что макет рисовали по существующей системе.
+@shadow-card:  0 0 7px rgba(0, 23, 75, .2);
+@shadow-btn:   0 2px 4px rgba(0, 93, 143, .25);
+@shadow-arrow: 0 0 7px rgba(102, 102, 102, .2);
+@shadow-tech:  -8px 5px 12px rgba(0, 0, 0, .26);

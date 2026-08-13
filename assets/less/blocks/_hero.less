@@ -1,0 +1,197 @@
+//
+// Герой и навигация по лендингу
+//
+
+.residence {
+
+    // ─── Герой ───────────────────────────────────────────────────────────────
+    // В макете 1920×900, текст прижат к низу с отступом 90px.
+    &__hero {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        height: 900px;
+        overflow: hidden;
+        color: @white;
+        .full-bleed();
+        .photo-overlay(rgba(0, 0, 0, .6), rgba(0, 0, 0, 0));
+
+        .to-xxl({ height: 760px; });
+        .to-lg({  height: 620px; });
+        .to-md({  height: 543px; }); // высота из мобильного макета
+
+        &-media {
+            position: absolute;
+            inset: 0;
+
+            img {
+                .cover-img();
+            }
+        }
+
+        &-inner {
+            position: relative;
+            z-index: 2;
+            padding-bottom: 90px;
+            text-align: center;
+
+            .to-md({ padding-bottom: 40px; });
+        }
+
+        &-title {
+            .font(@fs-h1, @lh-h1, @fw-bold);
+            text-transform: uppercase;
+            margin: 0;
+
+            .to-md({
+                .font(@fs-h1-m, @lh-h1-m, @fw-bold);
+            });
+        }
+
+        &-sub {
+            .font(@fs-h1-sub, @lh-h1-sub, @fw-bold);
+            margin-top: 15px;
+
+            .to-md({
+                .font(@fs-h1-sub-m, @lh-h1-sub-m, @fw-bold);
+                margin-top: 8px;
+            });
+        }
+    }
+
+    // ─── Навигация по разделам ───────────────────────────────────────────────
+    // Полоса под героем: ссылки-разделители + розовая кнопка.
+    // В макете высота 149 с паддингом 40 сверху и снизу.
+    &__nav {
+        padding: 40px 0;
+
+        .to-md({ padding: 20px 0; });
+
+        > .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+
+            .to-md({
+                justify-content: space-between;
+                gap: @gap-sm;
+            });
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li + li {
+                border-left: 1px solid fade(@dark-blue, 20%);
+            }
+
+            li {
+                padding: 0 24px;
+            }
+
+            .to-lg({
+                li { padding: 0 14px; }
+            });
+
+            .to-md({ display: none; });
+        }
+
+        &-link {
+            .font(@fs-body, @lh-body-wide, @fw-regular);
+            color: @dark-blue;
+            white-space: nowrap;
+            transition: color @ease;
+
+            &:hover,
+            &:focus-visible {
+                color: @pink;
+            }
+        }
+
+        // Мобильный вариант — «Разделы» с выпадающим списком.
+        // Так нарисовано в макете mob: не бургер, а дропдаун.
+        &-mobile {
+            display: none;
+            position: relative;
+
+            .to-md({ display: block; });
+        }
+
+        &-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            color: @dark-blue;
+            font-family: inherit;
+            .font(@fs-body-m, @lh-body, @fw-regular);
+        }
+
+        &-chevron {
+            transition: transform @ease;
+
+            .residence__nav-toggle[aria-expanded='true'] & {
+                transform: rotate(180deg);
+            }
+        }
+
+        &-drop {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            z-index: 20;
+            min-width: 200px;
+            margin: 0;
+            padding: 12px 16px;
+            list-style: none;
+            background: @white;
+            border-radius: @radius;
+            box-shadow: @shadow-card;
+
+            &[hidden] {
+                display: none;
+            }
+
+            li + li {
+                margin-top: 10px;
+            }
+        }
+
+        // Розовая кнопка «Заказать проект».
+        // .btn__accent с сайта уже даёт фон @pink и белый текст.
+        &-cta {
+            white-space: nowrap;
+
+            .to-md({
+                .font(@fs-body-m, @lh-body, @fw-regular);
+                padding: 6px 16px;
+            });
+        }
+    }
+}
+
+// Заглушка шапки — только для автономного превью, на прод не идёт.
+.residence-stub {
+    border-bottom: 1px solid rgba(0, 23, 75, .12);
+    padding: 14px 0;
+    font-family: @font;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    &__note {
+        .font(12px, 16px, @fw-regular);
+        color: fade(@dark-blue, 45%);
+    }
+}

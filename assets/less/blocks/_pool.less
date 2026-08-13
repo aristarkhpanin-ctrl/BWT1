@@ -1,0 +1,118 @@
+//
+// Кейс «Частный бассейн в Подмосковье»
+//
+
+.residence {
+
+    &__pool {
+        &-main {
+            max-width: 901px;
+            margin: 0 auto;
+            border-radius: @radius;
+            overflow: hidden;
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        &-case {
+            margin-top: @gap;
+
+            .to-md({ margin-top: @gap-sm; });
+        }
+
+        &-case-title {
+            .font(@fs-h2, @lh-h2-tight, @fw-bold);
+            color: @dark-blue;
+            margin: 0 0 12px;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+
+            .to-md({
+                .font(@fs-h2-m, @lh-h2-m, @fw-bold);
+            });
+        }
+
+        // Пять плиток 277×364 в ряд
+        &-gallery {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: @gap-sm;
+            margin-top: @gap;
+
+            .to-lg({ grid-template-columns: repeat(3, minmax(0, 1fr)); });
+
+            .to-md({
+                .scroll-rail(@gap-xs);
+                display: flex;
+                margin-top: @gap-sm;
+            });
+
+            &-item {
+                display: block;
+                border-radius: @radius;
+                overflow: hidden;
+                box-shadow: @shadow-card;
+                .ratio(277, 364);
+
+                .to-md({ width: 200px; });
+
+                img {
+                    .cover-img();
+                    transition: transform @ease;
+                }
+
+                &:hover img {
+                    transform: scale(1.03);
+                }
+            }
+        }
+
+        &-video {
+            position: relative;
+            max-width: 901px;
+            margin: @gap auto 0;
+            border-radius: @radius;
+            overflow: hidden;
+            cursor: pointer;
+
+            .to-md({ margin-top: @gap-sm; });
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+
+            iframe {
+                display: block;
+                width: 100%;
+                aspect-ratio: 901 / 506;
+                border: 0;
+            }
+        }
+
+        &-play {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            transition: transform @ease;
+
+            &:hover {
+                transform: translate(-50%, -50%) scale(1.06);
+            }
+
+            .to-md({
+                svg { width: 48px; height: 48px; }
+            });
+        }
+    }
+}

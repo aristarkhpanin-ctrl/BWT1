@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Системы водоподготовки BWT для резиденций, вилл с бассейнами и SPA</title>
+    <meta name="description" content="Система водоподготовки BWT для резиденций, вилл с бассейнами и SPA. Вода превосходного качества 24/7: проектирование, оборудование, монтаж, пусконаладка и сервис от одного производителя.">
+
+    <!-- Стили сайта. На проде они уже подключены шаблоном bwt_2023_general,
+         здесь лежат локальными копиями только ради автономного превью. -->
+    <link rel="stylesheet" href="vendor/css/uikit.min.css">
+    <link rel="stylesheet" href="vendor/css/template_styles.css">
+    <link rel="stylesheet" href="vendor/css/two-cols.min.css">
+    <link rel="stylesheet" href="vendor/css/info.min.css">
+    <link rel="stylesheet" href="vendor/css/footer.min.css">
+    <link rel="stylesheet" href="vendor/css/slick.css">
+    <link rel="stylesheet" href="vendor/css/slick-theme.css">
+    <link rel="stylesheet" href="vendor/css/magnific-popup.min.css">
+
+    <!-- Стили лендинга -->
+    <link rel="stylesheet" href="assets/css/residence.css">
+</head>
+<body>
+
+<!--
+    Заглушка шапки: на проде сюда встаёт штатный <header class="header">
+    из шаблона Bitrix. Полная разметка боевой шапки сохранена в
+    vendor/header-reference.html (62 КБ, мега-меню) — в лендинг не
+    встраивается, чтобы не дублировать шаблон сайта.
+-->
+<header class="residence-stub">
+    <div class="container residence-stub__inner">
+        <a class="residence-stub__logo" href="https://www.bwt.ru/">
+            <img src="vendor/img/logo.svg" alt="BWT" width="90" height="30">
+        </a>
+        <span class="residence-stub__note">заглушка шапки — на проде здесь шаблонный header сайта</span>
+    </div>
+</header>
+
+
+<main class="residence newFontCyr">
+
+    <!-- ══ 1. Герой ══════════════════════════════════════════════════════ -->
+    <section class="residence__hero">
+        <picture class="residence__hero-media">
+            <img src="assets/img/hero-villa.webp" alt="Современная вилла у воды на закате"
+                 width="1920" height="900" fetchpriority="high" decoding="async">
+        </picture>
+        <div class="container residence__hero-inner">
+            <h1 class="residence__hero-title">
+                Система водоподготовки BWT для резиденций, вилл с бассейнами и SPA
+            </h1>
+            <p class="residence__hero-sub">
+                Вода превосходного качества 24/7 в доме вашей мечты
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ══ 2. Навигация по лендингу ══════════════════════════════════════ -->
+    <nav class="residence__nav" aria-label="Разделы страницы">
+        <div class="container">
+            <!-- Десктоп: горизонтальный ряд ссылок -->
+            <ul class="residence__nav-list">
+                <li><a class="residence__nav-link js-scroll-down" href="#section-scope">Почему BWT</a></li>
+                <li><a class="residence__nav-link js-scroll-down" href="#section-comfort">Преимущества</a></li>
+                <li><a class="residence__nav-link js-scroll-down" href="#section-stages">Этапы проекта</a></li>
+                <li><a class="residence__nav-link js-scroll-down" href="#section-tech">Технологии</a></li>
+            </ul>
+
+            <!-- Мобильный: выпадающий список «Разделы» вместо ряда ссылок -->
+            <div class="residence__nav-mobile">
+                <button type="button" class="residence__nav-toggle js-nav-toggle"
+                        aria-expanded="false" aria-controls="residence-nav-drop">
+                    Разделы
+                    <svg class="residence__nav-chevron" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">
+                        <path d="M1 1L5 5L9 1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </button>
+                <ul class="residence__nav-drop" id="residence-nav-drop" hidden>
+                    <li><a class="residence__nav-link js-scroll-down" href="#section-scope">Почему BWT</a></li>
+                    <li><a class="residence__nav-link js-scroll-down" href="#section-comfort">Преимущества</a></li>
+                    <li><a class="residence__nav-link js-scroll-down" href="#section-stages">Этапы проекта</a></li>
+                    <li><a class="residence__nav-link js-scroll-down" href="#section-tech">Технологии</a></li>
+                </ul>
+            </div>
+
+            <a class="btn btn__accent btn__round residence__nav-cta js-scroll-down" href="#section-request">
+                Заказать проект
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- ══ 3. Типы объектов ══════════════════════════════════════════════ -->
+    <section class="residence__section residence__objects" id="section-objects">
+        <div class="container">
+            <div class="residence__head">
+                <h2 class="residence__title">
+                    Система водоподготовки проектируется для объектов с высокой стоимостью
+                    инженерной инфраструктуры и повышенными требованиями к надежности:
+                </h2>
+            </div>
+        </div>
+
+        <!-- Ряд шире контейнера (в макете 2060 при контенте 1320) — уезжает
+             в горизонтальную прокрутку, на мобильном ведёт себя так же. -->
+        <div class="residence__objects-rail js-rail">
+            <article class="residence__object">
+                <h3 class="residence__object-title">Резиденции, виллы и особняки</h3>
+                <div class="residence__object-media">
+                    <img src="assets/img/object-1-residence.webp" alt="Резиденция с бассейном" loading="lazy" width="277" height="364">
+                </div>
+            </article>
+            <article class="residence__object">
+                <h3 class="residence__object-title">Частные дома</h3>
+                <div class="residence__object-media">
+                    <img src="assets/img/object-2-private-house.webp" alt="Частный дом" loading="lazy" width="277" height="364">
+                </div>
+            </article>
+            <article class="residence__object">
+                <h3 class="residence__object-title">Усадьбы и поместья</h3>
+                <div class="residence__object-media">
+                    <img src="assets/img/object-3-estate.webp" alt="Усадьба в классическом стиле" loading="lazy" width="277" height="364">
+                </div>
+            </article>
+            <article class="residence__object">
+                <h3 class="residence__object-title">Дома с бассейнами и SPA-зонами</h3>
+                <div class="residence__object-media">
+                    <img src="assets/img/object-4-pool-spa.webp" alt="Дом с бассейном и SPA" loading="lazy" width="277" height="364">
+                </div>
+            </article>
+            <article class="residence__object">
+                <h3 class="residence__object-title">Дома с несколькими санузлами</h3>
+                <div class="residence__object-media">
+                    <img src="assets/img/object-5-bathrooms.webp" alt="Интерьер санузла" loading="lazy" width="277" height="364">
+                </div>
+            </article>
+            <article class="residence__object">
+                <h3 class="residence__object-title">Дома с декоративными прудами</h3>
+                <div class="residence__object-media">
+                    <img src="assets/img/object-6-ponds.webp" alt="Дом с декоративным прудом" loading="lazy" width="277" height="364">
+                </div>
+            </article>
+            <article class="residence__object">
+                <h3 class="residence__object-title">Объекты с высокой водонагрузкой</h3>
+                <p class="residence__object-note">частные дома от 1000 м²</p>
+                <div class="residence__object-media">
+                    <img src="assets/img/object-7-high-load.webp" alt="Крупный частный дом" loading="lazy" width="271" height="364">
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+    <!-- ══ 4. Масштаб решений + лента оборудования ═══════════════════════ -->
+    <section class="residence__section residence__scope" id="section-scope">
+        <div class="container">
+            <div class="residence__head">
+                <h2 class="residence__title">
+                    Решения BWT применяются в проектах с максимально высокими требованиями
+                    к качеству воды
+                </h2>
+                <p class="residence__lead">
+                    от фармацевтического производства и микроэлектроники до общественных бассейнов
+                    олимпийского уровня, пятизвездочных отелей, премиальных жилых комплексов и HoReCa.
+                    Этот опыт формирует инженерную основу для реализации систем водоподготовки
+                    в частных резиденциях самого высокого уровня. Комплексная логика решения
+                    обеспечивает согласованную работу оборудования и стабильный результат.
+                </p>
+            </div>
+        </div>
+
+        <div class="residence__scope-rail js-rail">
+            <div class="residence__scope-item"><img src="assets/img/equipment-1.webp" alt="Оборудование водоподготовки BWT" loading="lazy" width="277" height="364"></div>
+            <div class="residence__scope-item"><img src="assets/img/equipment-2.webp" alt="Промышленная станция водоочистки" loading="lazy" width="277" height="364"></div>
+            <div class="residence__scope-item"><img src="assets/img/equipment-3.webp" alt="Узел водоподготовки" loading="lazy" width="277" height="364"></div>
+            <div class="residence__scope-item"><img src="assets/img/equipment-4.webp" alt="Расходомер на выходе обратного осмоса" loading="lazy" width="277" height="364"></div>
+            <div class="residence__scope-item"><img src="assets/img/equipment-5.webp" alt="Машинный зал системы водоподготовки" loading="lazy" width="277" height="364"></div>
+            <div class="residence__scope-item"><img src="assets/img/equipment-6.webp" alt="Осветлительно-сорбционные фильтры BWT" loading="lazy" width="277" height="364"></div>
+            <div class="residence__scope-item"><img src="assets/img/equipment-7.webp" alt="Автоматический умягчитель BWT Rondomat" loading="lazy" width="277" height="364"></div>
+        </div>
+    </section>
+
+
+    <!-- ══ 5. Баннер «Вилла или усадьба» ═════════════════════════════════ -->
+    <section class="residence__section residence__banner residence__banner_manor">
+        <picture class="residence__banner-media">
+            <img src="assets/img/banner-manor-winter.webp" alt="Классическая усадьба зимой" loading="lazy" width="1920" height="900">
+        </picture>
+        <div class="container residence__banner-inner">
+            <h2 class="residence__banner-title">
+                Современная вилла или родовое имение в стиле русской усадьбы?
+            </h2>
+            <p class="residence__banner-text">
+                Архитектура отражает вкус владельца. Инженерные технологии определяют качество жизни.
+                Поэтому независимо от стиля вашего дома современные системы водоподготовки создают
+                основу ежедневного комфорта: обеспечивают безупречное качество воды, защищают
+                дорогостоящие материалы и инженерные системы, продлевают срок их службы и позволяют
+                дому сохранять свою ценность на протяжении многих лет.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ══ 6. Дом высокого класса (текст + чертёж) ═══════════════════════ -->
+    <section class="residence__section residence__split" id="section-engineering">
+        <div class="container residence__split-inner">
+            <div class="residence__split-content">
+                <h2 class="residence__title residence__title_left">
+                    Дом высокого класса требует такого же уровня инженерных решений
+                </h2>
+                <p class="residence__split-text">
+                    В больших частных домах система водоподготовки должна обеспечивать стабильное
+                    качество воды при любой нагрузке. Несколько ванных комнат, SPA-зона, бассейн,
+                    прачечная, кухня, высокая пиковая нагрузка — всё это требует профессионального
+                    инженерного подхода.
+                </p>
+                <a class="btn btn__blue btn__round js-scroll-down" href="#section-request">
+                    Получить КП
+                </a>
+            </div>
+            <div class="residence__split-media">
+                <img src="assets/img/blueprint-house.webp" alt="Чертёж дома с инженерными системами" loading="lazy" width="1172" height="662">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 7. Частые проблемы ════════════════════════════════════════════ -->
+    <section class="residence__section residence__problems" id="section-problems">
+        <div class="container">
+            <div class="residence__head">
+                <h2 class="residence__title">Частые проблемы:</h2>
+            </div>
+            <ul class="residence__problems-grid">
+                <li class="residence__problem"><span><b>Выход из строя</b> сенсорного управления сантехники, форсунок душевых леек</span></li>
+                <li class="residence__problem"><span><b>Выход из строя</b> водонагревательного оборудования</span></li>
+                <li class="residence__problem"><span><b>Сервисные вмешательства</b> на регулярной основе</span></li>
+                <li class="residence__problem"><span><b>Известковый налет</b> на дорогостоящей сантехнике, плитке, стеклах</span></li>
+                <li class="residence__problem"><span><b>Снижение уровня</b> ежедневного комфорта</span></li>
+                <li class="residence__problem"><span><b>Нестабильная работа</b> системы</span></li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- ══ 8. Инженерный подход (bento) ══════════════════════════════════ -->
+    <section class="residence__section residence__approach" id="section-approach">
+        <div class="container">
+            <div class="residence__head">
+                <h2 class="residence__title">Инженерный подход снижает риск эксплуатационных проблем</h2>
+                <p class="residence__lead">
+                    Система водоподготовки для большого дома должна учитывать множество факторов:
+                    параметры воды, объем потребления, особенности инженерной инфраструктуры
+                </p>
+                <p class="residence__approach-sub">Комплексный подход позволяет:</p>
+            </div>
+
+            <div class="residence__approach-grid">
+                <div class="residence__approach-col">
+<figure class="residence__approach-card residence__approach-card_tall">
+                    <img src="assets/img/approach-1-filter.webp" alt="Фильтр BWT в техническом помещении" loading="lazy" width="643" height="633">
+                    <figcaption>Снизить вероятность ошибок подбора оборудования</figcaption>
+                </figure>
+<figure class="residence__approach-card residence__approach-card_short">
+                    <img src="assets/img/approach-3-integration.webp" alt="Оборудование, встроенное в инженерную систему дома" loading="lazy" width="643" height="341">
+                    <figcaption>Обеспечить корректную интеграцию системы</figcaption>
+                </figure>
+                </div>
+                <div class="residence__approach-col">
+<figure class="residence__approach-card residence__approach-card_short">
+                    <img src="assets/img/approach-2-monitor.webp" alt="Инженер BWT за пультом управления" loading="lazy" width="643" height="341">
+                    <figcaption>Минимизировать необходимость корректировок</figcaption>
+                </figure>
+<figure class="residence__approach-card residence__approach-card_tall">
+                    <img src="assets/img/approach-4-columns.webp" alt="Колонны системы водоподготовки BWT" loading="lazy" width="643" height="633">
+                    <figcaption>Повысить стабильность работы оборудования</figcaption>
+                </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 9. Единая ответственность + этапы 01–07 ═══════════════════════ -->
+    <section class="residence__section residence__stages" id="section-stages">
+        <div class="residence__stages-banner">
+            <picture class="residence__banner-media">
+                <img src="assets/img/banner-engineer-desk.webp" alt="Инженер BWT за проектной документацией" loading="lazy" width="1920" height="740">
+            </picture>
+            <div class="container residence__stages-banner-inner">
+                <h2 class="residence__banner-title">
+                    Единая инженерная логика<br>Единая ответственность
+                </h2>
+                <p class="residence__banner-text">
+                    BWT разрабатывает системы водоподготовки как комплексное инженерное решение,
+                    учитывающее параметры объекта, характеристики воды и требования к производительности.
+                </p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="residence__stages-card">
+                <h3 class="residence__stages-title">Один производитель — одна зона ответственности:</h3>
+                <p class="residence__stages-lead">
+                    От проектирования до сервисного обслуживания сопровождаем вас на протяжении
+                    всего срока владения объектом:
+                </p>
+
+                <div class="residence__stepper js-stepper">
+                    <button type="button" class="residence__stepper-arrow residence__stepper-arrow_prev js-stepper-prev"
+                            aria-label="Предыдущий этап">
+                        <svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true">
+                            <path d="M9 1L2 8L9 15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                        </svg>
+                    </button>
+
+                    <div class="residence__stepper-track">
+                        <ol class="residence__stepper-list" role="tablist">
+                            <li><button type="button" class="residence__stepper-dot is-active js-stepper-dot" data-step="1" role="tab" aria-selected="true">01</button></li>
+                            <li><button type="button" class="residence__stepper-dot js-stepper-dot" data-step="2" role="tab" aria-selected="false">02</button></li>
+                            <li><button type="button" class="residence__stepper-dot js-stepper-dot" data-step="3" role="tab" aria-selected="false">03</button></li>
+                            <li><button type="button" class="residence__stepper-dot js-stepper-dot" data-step="4" role="tab" aria-selected="false">04</button></li>
+                            <li><button type="button" class="residence__stepper-dot js-stepper-dot" data-step="5" role="tab" aria-selected="false">05</button></li>
+                            <li><button type="button" class="residence__stepper-dot js-stepper-dot" data-step="6" role="tab" aria-selected="false">06</button></li>
+                            <li><button type="button" class="residence__stepper-dot js-stepper-dot" data-step="7" role="tab" aria-selected="false">07</button></li>
+                        </ol>
+                    </div>
+
+                    <button type="button" class="residence__stepper-arrow residence__stepper-arrow_next js-stepper-next"
+                            aria-label="Следующий этап">
+                        <svg width="10" height="16" viewBox="0 0 10 16" aria-hidden="true">
+                            <path d="M1 1L8 8L1 15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <p class="residence__stepper-label js-stepper-label">01/ Анализ воды</p>
+
+                <!-- Подписи этапов для JS -->
+                <script type="application/json" class="js-stepper-data">
+                    [
+                        "01/ Анализ воды",
+                        "02/ Инженерный подбор",
+                        "03/ Проектирование решения",
+                        "04/ Поставка",
+                        "05/ Монтаж",
+                        "06/ Пусконаладка",
+                        "07/ Сервисное сопровождение"
+                    ]
+                </script>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 10. Баннер «Предсказуемость результата» ═══════════════════════ -->
+    <section class="residence__section residence__banner residence__banner_dusk">
+        <picture class="residence__banner-media">
+            <img src="assets/img/banner-villa-dusk.webp" alt="Освещённая вилла с бассейном в сумерках" loading="lazy" width="1920" height="810">
+        </picture>
+        <div class="container residence__banner-inner">
+            <h2 class="residence__banner-title">
+                Решение для домов, где важна предсказуемость результата
+            </h2>
+        </div>
+    </section>
+
+
+    <!-- ══ 11. Комфорт ═══════════════════════════════════════════════════ -->
+    <section class="residence__section residence__comfort" id="section-comfort">
+        <div class="container">
+            <div class="residence__head">
+                <h2 class="residence__title">Комфорт, который не требует внимания</h2>
+                <p class="residence__lead">
+                    Система водоподготовки работает как часть инженерной среды дома, обеспечивая
+                    стабильный результат без необходимости постоянного контроля
+                </p>
+            </div>
+
+            <div class="residence__comfort-row residence__comfort-row_first">
+                <article class="residence__comfort-card residence__comfort-card_wide">
+                    <div class="residence__comfort-media">
+                        <img src="assets/img/comfort-1-quality.webp" alt="Специалист BWT с мембранным элементом" loading="lazy" width="630" height="438">
+                    </div>
+                    <h3 class="residence__comfort-title">Стабильное качество воды 24/7</h3>
+                    <p class="residence__comfort-text">во всех точках водоразбора, в условиях высокой нагрузки.</p>
+                </article>
+                <article class="residence__comfort-card">
+                    <div class="residence__comfort-media">
+                        <img src="assets/img/comfort-2-reliability.webp" alt="Модульная система водоподготовки" loading="lazy" width="307" height="438">
+                    </div>
+                    <h3 class="residence__comfort-title">Надежная работа системы</h3>
+                    <p class="residence__comfort-text">конфигурация оборудования подбирается с учетом параметров объекта.</p>
+                </article>
+                <article class="residence__comfort-card">
+                    <div class="residence__comfort-media">
+                        <img src="assets/img/comfort-3-protection.webp" alt="Душевая зона без известкового налёта" loading="lazy" width="307" height="438">
+                    </div>
+                    <h3 class="residence__comfort-title">Защита сантехники и отделки</h3>
+                    <p class="residence__comfort-text">снижение риска образования налета и накипи.</p>
+                </article>
+            </div>
+
+            <div class="residence__comfort-row residence__comfort-row_second">
+                <article class="residence__comfort-card">
+                    <div class="residence__comfort-media">
+                        <img src="assets/img/comfort-4-daily.webp" alt="Ежедневный комфорт в ванной комнате" loading="lazy" width="307" height="438">
+                    </div>
+                    <h3 class="residence__comfort-title">Комфорт в ежедневном использовании</h3>
+                    <p class="residence__comfort-text">вода без раздражающих факторов, влияющих на привычный уровень удобства.</p>
+                </article>
+                <article class="residence__comfort-card">
+                    <div class="residence__comfort-media">
+                        <img src="assets/img/comfort-5-minimal.webp" alt="Автоматика системы водоподготовки" loading="lazy" width="307" height="438">
+                    </div>
+                    <h3 class="residence__comfort-title">Минимальное участие владельца</h3>
+                    <p class="residence__comfort-text">система работает автономно и не требует глубокого технического вовлечения.</p>
+                </article>
+                <article class="residence__comfort-card residence__comfort-card_wide">
+                    <div class="residence__comfort-media">
+                        <img src="assets/img/comfort-6-service.webp" alt="Сервисный инженер BWT в машинном зале" loading="lazy" width="630" height="438">
+                    </div>
+                    <h3 class="residence__comfort-title">Сервисное сопровождение</h3>
+                    <p class="residence__comfort-text">поддержка производителя на протяжении эксплуатации.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 12. Технологии BWT ════════════════════════════════════════════ -->
+    <section class="residence__section residence__tech" id="section-tech">
+        <div class="container residence__tech-inner">
+            <div class="residence__tech-media">
+                <img src="assets/img/tech-portrait.webp" alt="Владелец дома управляет системой со смартфона" loading="lazy" width="555" height="506">
+            </div>
+            <div class="residence__tech-content">
+                <h2 class="residence__title residence__title_left">
+                    Технологии водоподготовки <span class="residence__accent">BWT</span>
+                </h2>
+                <p class="residence__lead residence__tech-lead">
+                    BWT разрабатывает оборудование с учетом требований к надежности,
+                    производительности и стабильности качества воды.
+                </p>
+                <p class="residence__tech-text">
+                    <b>Европейское производство и инженерный подход</b> позволяют адаптировать
+                    систему под особенности конкретного объекта и обеспечить долгосрочную
+                    эффективность работы всей экосистемы дома.
+                </p>
+                <a class="btn btn__blue btn__round js-scroll-down" href="#section-request">
+                    Обсудить решение для моего дома
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 13. Где важны решения BWT ═════════════════════════════════════ -->
+    <section class="residence__section residence__usage" id="section-usage">
+        <div class="container residence__usage-inner">
+            <div class="residence__usage-content">
+                <h2 class="residence__title residence__title_left">
+                    Решения BWT используются там, где важны:
+                </h2>
+                <ol class="residence__usage-list">
+                    <li>стабильность параметров воды;</li>
+                    <li>надежность оборудования;</li>
+                    <li>предсказуемость результата;</li>
+                    <li>снижение эксплуатационных рисков;</li>
+                    <li>инвестиционная привлекательность объекта.</li>
+                </ol>
+            </div>
+            <div class="residence__usage-media">
+                <img src="assets/img/wireframe-house.webp" alt="Каркасная визуализация виллы с бассейном" loading="lazy" width="1269" height="789">
+            </div>
+        </div>
+        <div class="container residence__usage-cta">
+            <a class="btn btn__blue btn__round js-scroll-down" href="#section-request">
+                Обсудить решение для моего дома
+            </a>
+        </div>
+    </section>
+
+
+    <!-- ══ 14. Слайдер пространств ═══════════════════════════════════════ -->
+    <section class="residence__section residence__zones" id="section-zones">
+        <div class="container">
+            <div class="residence__head">
+                <h2 class="residence__title">Не просто чистая вода. Правильная вода для каждого пространства</h2>
+                <p class="residence__lead">
+                    Параметры воды проектируются под назначение каждого пространства — кухни,
+                    ванной, SPA, бассейна, климатических и инженерных систем.
+                </p>
+            </div>
+
+            <div class="residence__zones-slider js-zones">
+                <div class="residence__zone">
+                    <img src="assets/img/zone-1-kitchen.webp" alt="Кухня" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">кухня</span>
+                </div>
+                <div class="residence__zone">
+                    <img src="assets/img/zone-2-bathroom.webp" alt="Ванная комната" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">ванная</span>
+                </div>
+                <div class="residence__zone">
+                    <img src="assets/img/zone-3-shower.webp" alt="Душевая" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">душевая</span>
+                </div>
+                <div class="residence__zone">
+                    <img src="assets/img/zone-4-engineering.webp" alt="Инженерные системы" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">инженерные системы</span>
+                </div>
+                <div class="residence__zone">
+                    <img src="assets/img/zone-5-hammam.webp" alt="Хамам" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">хамам</span>
+                </div>
+                <div class="residence__zone">
+                    <img src="assets/img/zone-6-hvac.webp" alt="Системы кондиционирования" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">системы кондиционирования</span>
+                </div>
+                <div class="residence__zone">
+                    <img src="assets/img/zone-7-laundry.webp" alt="Прачечная" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">прачечная</span>
+                </div>
+                <div class="residence__zone">
+                    <img src="assets/img/zone-8-outdoor-pool.webp" alt="Открытый бассейн из нержавеющей стали" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">открытый бассейн из нержавеющей стали</span>
+                </div>
+                <div class="residence__zone">
+                    <img src="assets/img/zone-9-spa.webp" alt="SPA-зона" loading="lazy" width="1320" height="634">
+                    <span class="residence__zone-caption">SPA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 15. Форма заявки ══════════════════════════════════════════════ -->
+    <section class="residence__section residence__request" id="section-request">
+        <div class="container">
+            <div class="residence__request-card">
+                <div class="residence__request-intro">
+                    <h2 class="residence__title residence__title_left">
+                        Вода должна соответствовать уровню дома
+                    </h2>
+                    <p class="residence__lead">Мы справимся с этой задачей.</p>
+                </div>
+
+                <!--
+                    Форма собрана по боевой разметке bwt.ru:
+                    Bitrix WEB_FORM_ID=7, имена полей и sitekey SmartCaptcha —
+                    как на /business/pools/wooden-pools/. При интеграции нужно
+                    только вернуть server-side поле sessid.
+                -->
+                <form class="form residence__form" id="residence-form" method="post" action="" enctype="multipart/form-data">
+                    <input type="hidden" name="WEB_FORM_ID" value="7">
+                    <input type="hidden" name="email_to" value="noreply@bwt.ru">
+                    <input type="hidden" name="uri" value="">
+                    <input type="hidden" class="roistat_visit" name="form_text_104" value="">
+
+                    <div class="error_field"></div>
+
+                    <label class="input residence__form-field" for="residence-name">
+                        <input class="input__field" id="residence-name" name="form_text_92" type="text"
+                               placeholder="Имя*" required>
+                    </label>
+                    <label class="input residence__form-field" for="residence-phone">
+                        <input class="input__field js-input-phone" id="residence-phone" name="form_text_106" type="text"
+                               placeholder="Телефон*" autocomplete="off" required>
+                    </label>
+                    <label class="input residence__form-field" for="residence-email">
+                        <input class="input__field" id="residence-email" name="form_text_93" type="email"
+                               pattern=".+@.+\..+" placeholder="E-mail*" required>
+                    </label>
+                    <label class="input residence__form-field" for="residence-comment">
+                        <textarea class="input__field" id="residence-comment" name="form_textarea_95" rows="1"
+                                  placeholder="Комментарий" autocomplete="off"></textarea>
+                    </label>
+
+                    <div class="smart-captcha residence__form-captcha" id="residence-captcha"
+                         data-sitekey="3gaipy4reF6j7UUnQeSYJSZw33DRCLUdO0bEGRk8"></div>
+
+                    <div class="residence__form-bottom">
+                        <button class="btn btn__blue btn__round form__submit" type="submit">Оставить заявку</button>
+                        <p class="residence__form-note">
+                            Нажимая кнопку «Отправить», Вы даете согласие на обработку
+                            <a class="link link-dark-line" href="https://www.bwt.ru/upload/doc/politika.pdf" target="_blank" rel="noopener">ваших ПДн</a>,
+                            и принимаете условия
+                            <a class="link link-dark-line" href="https://www.bwt.ru/upload/doc/politika.pdf" target="_blank" rel="noopener">Политики обработки ПДн</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 16. Кейс бассейна ═════════════════════════════════════════════ -->
+    <section class="residence__section residence__pool" id="section-pool">
+        <div class="container">
+            <div class="residence__head">
+                <h2 class="residence__title">Вода вашей резиденции — от первого крана до собственного бассейна</h2>
+                <p class="residence__lead">
+                    Мы не только создадим комплексную систему водоподготовки для всего дома,
+                    но и построим современный бассейн — от проекта и производства оборудования
+                    до монтажа, запуска и сервиса.
+                </p>
+            </div>
+
+            <div class="residence__pool-main">
+                <img src="assets/img/pool-main.webp" alt="Частный бассейн с системой водоподготовки BWT" loading="lazy" width="901" height="506">
+            </div>
+
+            <div class="residence__head residence__pool-case">
+                <h3 class="residence__pool-case-title">Частный бассейн в Подмосковье</h3>
+                <p class="residence__lead">
+                    Проектирование, монтаж системы водоподготовки бассейна, монтаж
+                    цельнометаллической чаши бассейна из нержавеющей стали, пусконаладочные
+                    работы выполнены BWT
+                </p>
+            </div>
+
+            <div class="residence__pool-gallery js-gallery">
+                <a class="residence__pool-gallery-item" href="assets/img/pool-gallery-1.webp">
+                    <img src="assets/img/pool-gallery-1.webp" alt="Зона отдыха у бассейна" loading="lazy" width="277" height="364">
+                </a>
+                <a class="residence__pool-gallery-item" href="assets/img/pool-gallery-2.webp">
+                    <img src="assets/img/pool-gallery-2.webp" alt="Панорамное остекление бассейна" loading="lazy" width="277" height="364">
+                </a>
+                <a class="residence__pool-gallery-item" href="assets/img/pool-gallery-3.webp">
+                    <img src="assets/img/pool-gallery-3.webp" alt="Бассейн в эксплуатации" loading="lazy" width="277" height="364">
+                </a>
+                <a class="residence__pool-gallery-item" href="assets/img/pool-gallery-4.webp">
+                    <img src="assets/img/pool-gallery-4.webp" alt="Чаша бассейна из нержавеющей стали" loading="lazy" width="277" height="364">
+                </a>
+                <a class="residence__pool-gallery-item" href="assets/img/pool-gallery-5.webp">
+                    <img src="assets/img/pool-gallery-5.webp" alt="Переливной лоток бассейна" loading="lazy" width="277" height="364">
+                </a>
+            </div>
+
+            <div class="residence__pool-video js-video" data-video="">
+                <img src="assets/img/pool-video-poster.webp" alt="Видео: частный бассейн в Подмосковье" loading="lazy" width="901" height="506">
+                <button type="button" class="residence__pool-play" aria-label="Смотреть видео">
+                    <svg width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+                        <circle cx="40" cy="40" r="39" fill="rgba(255,255,255,.85)"/>
+                        <path d="M32 24L58 40L32 56Z" fill="#00174B"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 17. Финальный CTA ═════════════════════════════════════════════ -->
+    <section class="residence__section residence__cta" id="section-cta">
+        <div class="container">
+            <div class="residence__cta-card">
+                <div class="residence__cta-content">
+                    <h2 class="residence__title residence__title_left">Получить коммерческое предложение</h2>
+                    <p class="residence__cta-text">
+                        Свяжитесь с нами и специалисты BWT подготовят предварительное решение
+                        по водоподготовке, оборудованию и запуску.
+                    </p>
+                    <a class="btn btn__blue btn__round js-scroll-down" href="#section-request">Связаться</a>
+                </div>
+                <div class="residence__cta-media">
+                    <img src="assets/img/cta-laundry.webp" alt="Мягкое бельё после стирки" loading="lazy" width="795" height="423">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ 18. FAQ ═══════════════════════════════════════════════════════ -->
+    <section class="residence__section residence__faq" id="section-faq">
+        <div class="container">
+            <div class="residence__head">
+                <h2 class="residence__title">Вопросы о системах водоочистки для частного дома</h2>
+            </div>
+
+            <div class="residence__faq-list js-accordion">
+                <article class="residence__faq-item">
+                    <h3 class="residence__faq-heading">
+                        <button type="button" class="residence__faq-question js-accordion-trigger"
+                                aria-expanded="false" aria-controls="faq-panel-1" id="faq-trigger-1">
+                            <span>Как понять, какая система очистки воды подойдет для дома?</span>
+                            <span class="residence__faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="residence__faq-panel" id="faq-panel-1" role="region" aria-labelledby="faq-trigger-1" hidden>
+                        <div class="residence__faq-body">
+                            <p>Мы изучаем источник водоснабжения, результаты лабораторного исследования воды,
+                                метраж дома, количество санузлов, сценарии потребления и есть ли объекты
+                                на участке: бассейн, баня, спа, оранжерея. На основе этих данных инженер
+                                рассчитывает индивидуальную конфигурацию системы. Типовых решений
+                                не существует — каждый проект разрабатываем под конкретный дом.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="residence__faq-item">
+                    <h3 class="residence__faq-heading">
+                        <button type="button" class="residence__faq-question js-accordion-trigger"
+                                aria-expanded="false" aria-controls="faq-panel-2" id="faq-trigger-2">
+                            <span>Нужно ли делать анализ воды заранее?</span>
+                            <span class="residence__faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="residence__faq-panel" id="faq-panel-2" role="region" aria-labelledby="faq-trigger-2" hidden>
+                        <div class="residence__faq-body">
+                            <p>Анализ воды в независимой аккредитованной лаборатории — отправная точка
+                                каждого проекта. Данные лабораторного исследования определяют конфигурацию
+                                системы, состав оборудования и точный инженерный расчет.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="residence__faq-item">
+                    <h3 class="residence__faq-heading">
+                        <button type="button" class="residence__faq-question js-accordion-trigger"
+                                aria-expanded="false" aria-controls="faq-panel-3" id="faq-trigger-3">
+                            <span>Как долго длится установка системы водоочистки и насколько это затронет жизнь в доме?</span>
+                            <span class="residence__faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="residence__faq-panel" id="faq-panel-3" role="region" aria-labelledby="faq-trigger-3" hidden>
+                        <div class="residence__faq-body">
+                            <p>Сроки зависят от сложности проекта и готовности инженерных коммуникаций.
+                                Мы работаем аккуратно и деликатно: минимизируем вмешательство в повседневный
+                                ритм жизни, согласовываем график с вами заранее. Если дом еще строится или
+                                ремонт не завершен, система будет храниться на нашем складе до удобного
+                                момента. Если все готово — можем приступить уже на следующий день.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="residence__faq-item">
+                    <h3 class="residence__faq-heading">
+                        <button type="button" class="residence__faq-question js-accordion-trigger"
+                                aria-expanded="false" aria-controls="faq-panel-4" id="faq-trigger-4">
+                            <span>Насколько шумно работает система очистки воды для коттеджа?</span>
+                            <span class="residence__faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="residence__faq-panel" id="faq-panel-4" role="region" aria-labelledby="faq-trigger-4" hidden>
+                        <div class="residence__faq-body">
+                            <p>Системы BWT спроектированы так, чтобы их присутствие в доме не ощущалось.
+                                Умягчители серии Perla работают тише, чем разговор шепотом. Регенерация
+                                проходит в автоматическом режиме: система просто работает, пока вы
+                                занимаетесь своими делами.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="residence__faq-item">
+                    <h3 class="residence__faq-heading">
+                        <button type="button" class="residence__faq-question js-accordion-trigger"
+                                aria-expanded="false" aria-controls="faq-panel-5" id="faq-trigger-5">
+                            <span>Можно ли изменить систему водоочистки для частного дома в будущем?</span>
+                            <span class="residence__faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="residence__faq-panel" id="faq-panel-5" role="region" aria-labelledby="faq-trigger-5" hidden>
+                        <div class="residence__faq-body">
+                            <p>Да. Архитектура решений BWT изначально проектируется с учетом возможного
+                                изменения объекта. Если вы планируете добавить бассейн, построить
+                                спа-комплекс или увеличить производительность системы — это решается
+                                без демонтажа существующей инфраструктуры. Система растет вместе с домом.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="residence__faq-item">
+                    <h3 class="residence__faq-heading">
+                        <button type="button" class="residence__faq-question js-accordion-trigger"
+                                aria-expanded="false" aria-controls="faq-panel-6" id="faq-trigger-6">
+                            <span>Из чего состоит система очистки воды для частного дома?</span>
+                            <span class="residence__faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="residence__faq-panel" id="faq-panel-6" role="region" aria-labelledby="faq-trigger-6" hidden>
+                        <div class="residence__faq-body">
+                            <p>Система водоподготовки — это не один фильтр, а каскад последовательных
+                                ступеней, каждая из которых решает конкретную задачу.</p>
+                            <p><b>Первая ступень — механическая очистка:</b> задерживает взвешенные частицы,
+                                песок и окалину на входе в систему, защищая все оборудование.</p>
+                            <p><b>Вторая — обезжелезивание и деманганация:</b> удаляет растворенное железо
+                                и марганец, которые особенно характерны для воды из скважины.</p>
+                            <p><b>Третья — умягчение:</b> ключевой этап, который превращает жесткую воду
+                                в шелковисто-мягкую.</p>
+                            <p><b>Четвертая — тонкая очистка:</b> финишная полировка воды перед подачей
+                                в дом, фильтры задерживают частицы размером до 5 мкм.</p>
+                            <p><b>Пятая — УФ-обеззараживание:</b> нейтрализует бактерии и микроорганизмы
+                                без химии и изменения состава воды.</p>
+                            <p><b>Шестая — питьевая система с минерализацией:</b> доочистка и обогащение
+                                воды минералами прямо на кухонный кран.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="residence__faq-item">
+                    <h3 class="residence__faq-heading">
+                        <button type="button" class="residence__faq-question js-accordion-trigger"
+                                aria-expanded="false" aria-controls="faq-panel-7" id="faq-trigger-7">
+                            <span>Как понять, какой умягчитель в дом установить: Rondomat Duo или BWT Perla</span>
+                            <span class="residence__faq-icon" aria-hidden="true"></span>
+                        </button>
+                    </h3>
+                    <div class="residence__faq-panel" id="faq-panel-7" role="region" aria-labelledby="faq-trigger-7" hidden>
+                        <div class="residence__faq-body">
+                            <p>Оба решения работают по одному принципу: непрерывная подача воды, полная
+                                автоматика. Разница — в масштабе и архитектуре дома.</p>
+                            <p><b>BWT Perla</b> — кабинетный умягчитель нового поколения, который превращает
+                                жёсткую воду в шелковисто-мягкую и делает это непрерывно — 24/7. Два модуля,
+                                компактные габариты, производительность — до 3,2 м³/ч. Органично встраивается
+                                в техническое помещение, не занимает много места. Оптимальное решение для
+                                домов от 180 до 500 кв. м с несколькими санузлами и стандартным сценарием
+                                потребления воды.</p>
+                            <p><b>Rondomat Duo</b> — система другого класса. Две отдельные колонны с укороченным
+                                циклом регенерации и полной теплоизоляцией корпусов. Производительность
+                                Rondomat Duo 2.2 — 3,7 м³/ч, Rondomat Duo 3.2 — 5,5 м³/ч. Это решение для
+                                домов от 500 кв. м — с бассейном, спа, несколькими санузлами и высокими
+                                пиковыми нагрузками.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<!--
+    Футер взят с боевого сайта как есть (class="footer newFontCyr").
+    На проде выводится шаблоном — этот блок нужен только для превью.
+-->
+<footer class="footer newFontCyr">
+ <div class="footer__top">
+  <div class="row justify-content-between">
+   <div class="col-xl-auto">
+    <div class="footer__left d-flex flex-wrap">
+     <a class="footer__logo" href="https://www.bwt.ru/">
+      <img alt="BWT" class="footer__logo_img" src="vendor/img/logo.svg"/>
+     </a>
+     <div class="social d-flex d-md-none align-items-center footer__social justify-content-center">
+      <a class="social__item set_size" href="https://max.ru/join/MFwo_QMbz0LoXoGG1TWEA1RRn40Ygw_KcqHI-7LdNxc" rel="noopener noreferrer" target="_blank">
+       <img alt="MAX" class="social__item_icon" src="vendor/img/icons/icon-max.svg"/>
+      </a>
+      <a class="social__item set_size" href="https://ok.ru/bwt.russia" rel="noopener noreferrer" target="_blank">
+       <img alt="Одноклассники" class="social__item_icon" src="vendor/img/icons/icon-ok.svg"/>
+      </a>
+      <a class="social__item set_size" href="https://m.vk.com/bwt.russia" rel="noopener noreferrer" target="_blank">
+       <img alt="Vkontakte" class="social__item_icon" src="vendor/img/icons/icon-vk.svg"/>
+      </a>
+      <a class="social__item set_size" href="https://t.me/bwt_russia" rel="noopener noreferrer" target="_blank">
+       <img alt="Telegram" class="social__item_icon" src="vendor/img/icons/icon-telegram.svg"/>
+      </a>
+     </div>
+     <nav class="footer__nav d-flex flex-wrap">
+      <ul>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/about_us/">
+         О компании
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/useful-info/">
+         Статьи
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/catalog/">
+         Каталог
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/partnership/support/">
+         Поддержка
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/map/">
+         Где купить
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/business/">
+         Направления
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/dostavka/">
+         Доставка и оплата
+        </a>
+       </li>
+      </ul>
+      <ul>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/guarantee/">
+         Гарантия на приобретаемый товар
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/service/">
+         Сервис
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/partnership/">
+         Партнерам
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/contacts/">
+         Контакты
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://www.bwt.ru/lexikon/">
+         База знаний BWT
+        </a>
+       </li>
+       <li>
+        <a class="link link-dark" href="https://pro.bwt.ru/training/" rel="nofollow" target="_blank">
+         Обучение
+        </a>
+       </li>
+      </ul>
+     </nav>
+    </div>
+   </div>
+   <div class="col-xl-auto">
+    <div class="footer__right">
+     <div class="footer__subscribe-wrapper">
+      <form action="" class="form footer__subscribe" id="footer-subscribe-form" method="#">
+       <div class="footer__subscribe_title">
+        Подписывайтесь на наши новости
+       </div>
+       <div class="error_field">
+       </div>
+       <label class="input footer__subscribe_label" for="footer-subscribe-email">
+        <input class="input__field footer__subscribe_field" id="footer-subscribe-email" name="email" placeholder="Ваш email" type="text" value=""/>
+       </label>
+       <div class="footer__subscribe-bottom">
+        <label class="checkbox checkbox-box checkbox-flex checkbox-news input__long" for="footer-subscribe-news">
+         <input class="checkbox__old" id="footer-subscribe-news" name="news" type="checkbox"/>
+         <span class="checkbox__custom">
+         </span>
+         <div>
+          <span class="checkbox__title">
+           Я согласен(на) получать новости, экспертные материалы и персональные предложения от BWT.
+          </span>
+          <p class="checkbox__desc">
+           Не чаще 1-2 писем в месяц. Только действительно полезная информация. От подписки можно отказаться в любой момент.
+          </p>
+         </div>
+        </label>
+        <label class="checkbox checkbox-box checkbox-flex checkbox-policy input__long" for="footer-subscribe-policy">
+         <input class="checkbox__old" id="footer-subscribe-policy" name="policy" type="checkbox"/>
+         <span class="checkbox__custom">
+         </span>
+         <span class="checkbox__title checkbox__title-policy">
+          Отмечая этот пункт, вы подтверждаете
+          <a href="https://www.bwt.ru/upload/doc/agree_policy.pdf" target="_blank">
+           своё согласие на обработку персональных данных
+          </a>
+          в соответствии с
+          <a href="https://www.bwt.ru/upload/doc/politika.pdf" target="_blank">
+           Политикой обработки персональных данных
+          </a>
+          .
+         </span>
+        </label>
+        <input class="btn btn__round btn__blue footer__subscribe_btn" type="button" value="Отправить"/>
+       </div>
+      </form>
+     </div>
+     <div class="footer__contacts">
+      <div class="footer__contacts-block">
+       <div class="footer__contacts_address">
+        <b>
+         Центральный офис:
+        </b>
+        115 432, Москва, Проектируемый проезд № 4062, д. 6, стр. 16
+       </div>
+       <a class="footer__contacts_tel" href="tel:+74952253322" target="_blank">
+        +7 495 225-33-22
+       </a>
+      </div>
+      <div class="footer__contacts-block">
+       <div class="footer__contacts_address">
+        <b>
+         Фирменный бутик:
+        </b>
+        Москва, ТРК «РИГАМОЛЛ», Новорижское шоссе, 5-й км от МКАД, 1 этаж
+       </div>
+       <a class="footer__contacts_tel" href="tel:+74998773546" target="_blank">
+        +7 499 877 35 46
+       </a>
+      </div>
+      <div class="social d-none d-md-flex align-items-center footer__social justify-content-end">
+       <a class="social__item set_size" href="https://max.ru/join/MFwo_QMbz0LoXoGG1TWEA1RRn40Ygw_KcqHI-7LdNxc" rel="noopener noreferrer" target="_blank">
+        <img alt="MAX" class="social__item_icon" src="vendor/img/icons/icon-max.svg"/>
+       </a>
+       <a class="social__item set_size" href="https://ok.ru/bwt.russia" rel="noopener noreferrer" target="_blank">
+        <img alt="Одноклассники" class="social__item_icon" src="vendor/img/icons/icon-ok.svg"/>
+       </a>
+       <a class="social__item set_size" href="https://vk.com/bwt.russia" rel="noopener noreferrer" target="_blank">
+        <img alt="Vkontakte" class="social__item_icon" src="vendor/img/icons/icon-vk.svg"/>
+       </a>
+       <a class="social__item set_size" href="https://t.me/bwt_russia" rel="noopener noreferrer" target="_blank">
+        <img alt="Telegram" class="social__item_icon" src="vendor/img/icons/icon-telegram.svg"/>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="footer__bottom">
+  <div class="row align-items-center justify-content-between">
+   <div class="col-md-auto">
+    <div class="footer__bottom_link">
+     © 2026 ООО «БВТ». Все права защищены.
+    </div>
+   </div>
+   <div class="col-md-auto">
+    <a class="link link-dark footer__bottom_link" href="https://www.bwt.ru/sitemap/" rel="noopener noreferrer" target="_blank">
+     Карта сайта
+    </a>
+    <p>
+    </p>
+    <a class="link link-dark footer__bottom_link" href="https://www.bwt.ru/sitemap-catalog/" rel="noopener noreferrer" target="_blank">
+     Карта каталога сайта
+    </a>
+   </div>
+   <div class="col-md-auto">
+    <a class="link link-dark footer__bottom_link" href="https://www.bwt.ru/upload/doc/politika.pdf" rel="noopener noreferrer" target="_blank">
+     Политика обработки персональных данных
+    </a>
+    <br/>
+    <a class="link link-dark footer__bottom_link" href="https://www.bwt.ru/upload/Oferta_bwt.pdf" rel="noopener noreferrer" target="_blank">
+     Договор оферты
+    </a>
+   </div>
+  </div>
+ </div>
+</footer>
+
+
+<script src="vendor/js/jquery.min.js"></script>
+<script src="vendor/js/slick.min.js"></script>
+<script src="vendor/js/jquery.magnific-popup.min.js"></script>
+<script src="vendor/js/jquery.inputmask.min.js"></script>
+<script src="assets/js/residence.js"></script>
+
+</body>
+</html>

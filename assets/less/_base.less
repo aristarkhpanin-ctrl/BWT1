@@ -1,0 +1,105 @@
+//
+// Базовые стили лендинга
+//
+// ВАЖНО: @font-face здесь продублирован только для автономного превью.
+// На проде семейство «Cyr» уже объявлено в
+// local/templates/bwt_2023_general/template_styles.css с путями
+// /local/lib/fonts/Cyr/*.ttf — этот блок при интеграции можно удалить,
+// он ничего не добавляет, только повторяет то же самое от локальных файлов.
+//
+@font-face {
+    font-family: 'Cyr';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/BWT Cyr - Light Text.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cyr';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/BWT Cyr-Regular.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cyr';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/BWT Cyr-BoldHead.ttf') format('truetype');
+    font-display: swap;
+}
+
+// Корневой блок лендинга.
+// Класс .newFontCyr вешается в разметке рядом — он приходит с сайта и
+// переключает семейство на «Cyr», как это сделано у .pools-new-design-wooden.
+.residence {
+    font-family: @font;
+    color: @dark-blue;
+    background: @white;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    // Секции идут через одинаковый вертикальный ритм — в макете это
+    // auto-layout с gap 60 (десктоп) и 34 (мобильный).
+    &__section {
+        margin-bottom: @section-gap;
+
+        .to-md({
+            margin-bottom: @section-gap-mob;
+        });
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Шапка секции: заголовок + лид, по центру
+    &__head {
+        text-align: center;
+        margin-bottom: @gap;
+
+        .to-md({
+            margin-bottom: @gap-mob;
+        });
+    }
+
+    &__title {
+        .section-title();
+    }
+
+    &__lead {
+        .section-lead();
+        margin-top: 12px;
+    }
+
+    // Заголовок с выключкой влево — «Технологии водоподготовки BWT» и т.п.
+    &__title_left {
+        text-align: left;
+    }
+}
+
+// Якорь под фиксированную шапку сайта, чтобы плавный скролл
+// (pagescroll2id) не прятал заголовок секции под хедер.
+.residence [id^='section-'] {
+    scroll-margin-top: 90px;
+
+    .to-md({
+        scroll-margin-top: 60px;
+    });
+}

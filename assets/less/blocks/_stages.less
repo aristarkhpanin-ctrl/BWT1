@@ -1,0 +1,211 @@
+//
+// «Единая ответственность» + степпер этапов 01–07
+//
+// По макету: полноширинный баннер 1920×740, следом тёмная полоса 1920×511
+// (#1B263F), внутри которой карточка 1320×468 с градиентом.
+//
+
+.residence {
+
+    &__stages {
+        &-banner {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            height: 740px;
+            overflow: hidden;
+            color: @white;
+            .full-bleed();
+            .photo-overlay(rgba(0, 0, 0, .55), rgba(0, 0, 0, 0));
+
+            .to-xxl({ height: 620px; });
+            .to-lg({  height: 540px; });
+            .to-md({  height: 543px; });
+
+            img {
+                .cover-img();
+            }
+
+            &-inner {
+                position: relative;
+                z-index: 2;
+                padding-bottom: 60px;
+
+                .to-md({ padding-bottom: 30px; });
+            }
+        }
+
+        // Тёмная полоса на всю ширину, карточка по центру
+        &-card {
+            position: relative;
+            padding: 42px 49px;
+            border-radius: @radius;
+            color: @white;
+            background: linear-gradient(107deg, #000A20 0%, #000510 45%, #1B1132 100%);
+            box-shadow: @shadow-card;
+
+            .to-md({ padding: 28px 24px; });
+        }
+
+        &-title {
+            .font(@fs-h2, @lh-h2, @fw-bold);
+            text-transform: uppercase;
+            margin: 0;
+
+            .to-md({
+                .font(@fs-h2-m, @lh-h2-m, @fw-bold);
+            });
+        }
+
+        &-lead {
+            .font(@fs-lead, @lh-lead, @fw-regular);
+            margin-top: 20px;
+            max-width: 1100px;
+
+            .to-md({
+                .font(@fs-lead-m, @lh-lead-m, @fw-regular);
+            });
+        }
+    }
+
+    // Полоса-подложка секции этапов
+    &__stages.residence__section {
+        > .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        // тёмный фон за карточкой
+        background: linear-gradient(to bottom, @white 0, @white 90px, @card-dark-1 90px, @card-dark-1 100%);
+        padding-bottom: 60px;
+
+        .to-md({
+            background: linear-gradient(to bottom, @white 0, @white 40px, @card-dark-1 40px, @card-dark-1 100%);
+            padding-bottom: 30px;
+        });
+    }
+
+    // ─── Степпер ─────────────────────────────────────────────────────────────
+    &__stepper {
+        display: flex;
+        align-items: center;
+        gap: @gap-sm;
+        margin-top: 60px;
+
+        .to-md({
+            margin-top: @gap-sm;
+            gap: @gap-xs;
+        });
+
+        &-arrow {
+            flex: 0 0 auto;
+            width: 64px;
+            height: 64px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 50%;
+            cursor: pointer;
+            color: @white;
+            background: rgba(255, 255, 255, .18);
+            backdrop-filter: blur(6px);
+            box-shadow: @shadow-arrow;
+            transition: background @ease;
+
+            &:hover:not(:disabled) {
+                background: rgba(255, 255, 255, .3);
+            }
+
+            &:disabled {
+                opacity: .4;
+                cursor: default;
+            }
+
+            .to-md({
+                width: 38px;
+                height: 38px;
+
+                svg { width: 7px; height: 11px; }
+            });
+        }
+
+        &-track {
+            flex: 1 1 auto;
+            overflow: hidden;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            margin: 0;
+            padding: 0 0 14px;
+            list-style: none;
+
+            // линия-рельс под цифрами
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 4px;
+                height: 1px;
+                background: rgba(255, 255, 255, .45);
+            }
+
+            li {
+                position: relative;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                // точка на рельсе
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -14px;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background: @white;
+                }
+            }
+        }
+
+        &-dot {
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+            color: @white;
+            .font(@fs-card, @lh-card, @fw-bold);
+            transition: color @ease, font-size @ease;
+
+            &.is-active {
+                color: var(--bwt-pink, @pink);
+                .font(@fs-h1, @lh-h1, @fw-bold);
+            }
+
+            .to-md({
+                .font(14px, 18px, @fw-bold);
+
+                &.is-active { .font(@fs-h1-m, @lh-h1-m, @fw-bold); }
+            });
+        }
+
+        &-label {
+            .font(@fs-card-sm, @lh-card-sm, @fw-regular);
+            color: @white;
+            margin-top: 46px;
+
+            .to-md({
+                .font(@fs-body-m, @lh-body-m, @fw-regular);
+                margin-top: @gap-sm;
+            });
+        }
+    }
+}
