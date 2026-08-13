@@ -70,6 +70,11 @@
                 var active = i === current;
                 dot.classList.toggle('is-active', active);
                 dot.setAttribute('aria-selected', active ? 'true' : 'false');
+                // Класс на li гасит белую точку под активной цифрой:
+                // в макете вместо неё розовый отрезок линии.
+                if (dot.parentNode) {
+                    dot.parentNode.classList.toggle('is-current', active);
+                }
             });
             label.textContent = labels[current] || '';
             if (prev) prev.disabled = current === 0;
@@ -177,6 +182,69 @@
         });
     }
 
+    /* ───────────── Перетаскивание лент мышью ─────────────
+     * Ряды типов объектов и оборудования шире экрана. На тачпаде и
+     * тач-устройствах они и так листаются, а мышью прокрутить нечем —
+     * поэтому добавляем «схватить и потянуть».
+     */
+    function initDragScroll() {
+        var rails = document.querySelectorAll('.js-rail');
+
+        Array.prototype.forEach.call(rails, function (rail) {
+            var down = false, moved = false, startX = 0, startScroll = 0;
+
+            rail.addEventListener('pointerdown', function (e) {
+                // тач и перо оставляем нативной прокрутке
+                if (e.pointerType !== 'mouse' || e.button !== 0) return;
+                down = true;
+                moved = false;
+                startX = e.clientX;
+                startScroll = rail.scrollLeft;
+                rail.classList.add('is-grabbing');
+            });
+
+            rail.addEventListener('pointermove', function (e) {
+                if (!down) return;
+                var dx = e.clientX - startX;
+                if (!moved && Math.abs(dx) > 3) {
+                    moved = true;
+                    // захватываем указатель только когда это действительно
+                    // протяжка, иначе ломаются обычные клики по ссылкам
+                    if (rail.setPointerCapture) rail.setPointerCapture(e.pointerId);
+                }
+                if (moved) {
+                    e.preventDefault();
+                    rail.scrollLeft = startScroll - dx;
+                }
+            });
+
+            function stop(e) {
+                if (!down) return;
+                down = false;
+                rail.classList.remove('is-grabbing');
+                if (rail.releasePointerCapture && e.pointerId !== undefined) {
+                    try { rail.releasePointerCapture(e.pointerId); } catch (err) { /* уже отпущен */ }
+                }
+            }
+
+            rail.addEventListener('pointerup', stop);
+            rail.addEventListener('pointercancel', stop);
+            rail.addEventListener('pointerleave', stop);
+
+            // подавляем клик, если это была протяжка, а не тычок
+            rail.addEventListener('click', function (e) {
+                if (moved) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    moved = false;
+                }
+            }, true);
+
+            // нативный drag картинок мешает протяжке
+            rail.addEventListener('dragstart', function (e) { e.preventDefault(); });
+        });
+    }
+
     /* ───────────── Плагины на jQuery ───────────── */
     function initJqueryPlugins() {
         if (!$) return;
@@ -220,6 +288,7 @@
         initNavDropdown();
         initSmoothScroll();
         initVideo();
+        initDragScroll();
         initJqueryPlugins();
     }
 

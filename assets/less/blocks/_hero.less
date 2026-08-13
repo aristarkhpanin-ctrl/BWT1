@@ -48,12 +48,14 @@
             });
         }
 
+        // Вес взят из рендера макета (ink 686px ⇒ 400), а не из Figma API,
+        // который для этой ноды отдаёт 700.
         &-sub {
-            .font(@fs-h1-sub, @lh-h1-sub, @fw-bold);
+            .font(@fs-h1-sub, @lh-h1-sub, @fw-regular);
             margin-top: 15px;
 
             .to-md({
-                .font(@fs-h1-sub-m, @lh-h1-sub-m, @fw-bold);
+                .font(@fs-h1-sub-m, @lh-h1-sub-m, @fw-regular);
                 margin-top: 8px;
             });
         }

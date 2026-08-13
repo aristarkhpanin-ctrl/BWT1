@@ -47,11 +47,15 @@
         box-sizing: border-box;
     }
 
-    img {
+    // Сбросы завёрнуты в :where(), чтобы иметь нулевую специфичность.
+    // Без него `.residence p` (0,1,1) перебивал `margin-top` у блочных
+    // правил вида `.residence__lead` (0,1,0) — и все отступы под
+    // заголовками схлопывались в ноль.
+    :where(img) {
         max-width: 100%;
     }
 
-    p {
+    :where(p) {
         margin: 0;
     }
 
@@ -102,4 +106,14 @@
     .to-md({
         scroll-margin-top: 60px;
     });
+}
+
+// Шаблон сайта объявляет `.newFontCyr h2 { font-weight: 600 }` — специфичность
+// (0,1,1) перебивает наши одноклассовые правила. Возвращаем вес из макета.
+.residence .residence__title,
+.residence .residence__stages-title,
+.residence .residence__pool-case-title,
+.residence .residence__comfort-title,
+.residence .residence__faq-heading {
+    font-weight: @fw-bold;
 }

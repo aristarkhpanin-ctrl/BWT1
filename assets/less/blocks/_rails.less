@@ -39,7 +39,8 @@
             left: 22px;
             width: 225px;
             margin: 0;
-            .font(@fs-card, @lh-card, @fw-bold);
+            // Вес по рендеру макета: плотность 2,95 px/колонку ⇒ 400.
+            .font(@fs-card, @lh-card, @fw-regular);
             color: @dark-blue;
 
             .to-md({
@@ -47,7 +48,7 @@
                 left: 18px;
                 width: auto;
                 right: 18px;
-                .font(@fs-card-m, @lh-card-m, @fw-bold);
+                .font(@fs-card-m, @lh-card-m, @fw-regular);
             });
         }
 
@@ -59,7 +60,7 @@
             left: 22px;
             width: 190px;
             margin: 0;
-            .font(@fs-body, @lh-body, @fw-bold);
+            .font(@fs-body, @lh-body, @fw-regular);
             color: @dark-blue;
 
             .to-md({
@@ -67,7 +68,7 @@
                 left: 18px;
                 right: 18px;
                 width: auto;
-                .font(12px, 16px, @fw-bold);
+                .font(12px, 16px, @fw-regular);
             });
         }
     }

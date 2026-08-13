@@ -90,6 +90,14 @@
 
     &::-webkit-scrollbar { height: 0; }
     > * { flex: 0 0 auto; }
+
+    // мышью ленту можно тянуть — курсор подсказывает это
+    cursor: grab;
+
+    &.is-grabbing {
+        cursor: grabbing;
+        user-select: none;
+    }
 }
 
 .visually-hidden() {
