@@ -42,6 +42,21 @@
         &-content {
             position: relative;
             z-index: 2;
+
+            // В mob-макете заголовок и лид этого блока выключены по центру,
+            // а кнопка растянута почти на всю ширину контента (338 из 370).
+            .to-md({
+                text-align: center;
+
+                .residence__title { text-align: center; }
+
+                .btn {
+                    display: block;
+                    width: ~"calc(100% - 32px)";
+                    margin: 0 auto;
+                    text-align: center;
+                }
+            });
         }
 
         &-text {
@@ -204,8 +219,13 @@
             border-radius: @radius;
             overflow: hidden;
 
+            // В mob-макете подложка тянется во всю ширину экрана (410),
+            // картинка стоит НАД текстом и обрезана в квадрат 370×370.
             .to-md({
                 grid-template-columns: 1fr;
+                border-radius: 0;
+                padding: @container-pad-mob;
+                .full-bleed();
             });
         }
 
@@ -213,7 +233,7 @@
             padding: 20px;
             align-self: center;
 
-            .to-md({ padding: @gap-sm; });
+            .to-md({ padding: 0; });
         }
 
         &-text {
@@ -235,7 +255,13 @@
                 .cover-img();
             }
 
-            .to-md({ aspect-ratio: 370 / 208; });
+            .to-md({
+                order: -1;                 // картинка над текстом
+                aspect-ratio: 1 / 1;       // квадрат 370×370 из mob-макета
+                margin-bottom: @gap-sm;
+                border-radius: @radius;
+                overflow: hidden;
+            });
         }
     }
 }

@@ -41,15 +41,15 @@
             });
         }
 
+        // В mob-макете абзацев под заголовками баннеров нет — на фото
+        // они плохо читаются, оставлен только заголовок. В DOM текст
+        // сохраняем (нужен поисковикам), прячем только визуально.
         &-text {
             .font(@fs-body, @lh-body, @fw-regular);
             margin-top: 12px;
             max-width: 795px;
 
-            .to-md({
-                .font(@fs-body-m, @lh-body-m, @fw-regular);
-                max-width: none;
-            });
+            .to-md({ display: none; });
         }
 
         // Усадьба зимой — 1920×900
