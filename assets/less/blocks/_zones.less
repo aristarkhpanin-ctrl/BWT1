@@ -8,9 +8,20 @@
 
 .residence {
 
+    // В макете лид отбит от слайдера на 26, а не на общие 30
+    &__zones .residence__head {
+        margin-bottom: 26px;
+
+        .to-md({ margin-bottom: @gap-mob; });
+    }
+
     &__zones-slider {
         border-radius: @radius;
         overflow: hidden;
+        // slick-theme добавляет нижний отступ и строчный зазор у слайдов —
+        // из-за них секция была на 7px выше макета
+        line-height: 0;
+        margin-bottom: 0;
 
         // До инициализации Slick показываем только первый слайд,
         // чтобы не было «простыни» из девяти картинок.

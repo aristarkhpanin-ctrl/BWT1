@@ -14,10 +14,16 @@
     // за правый край экрана на 34px.
     &__split {
         .full-bleed();
+        // в макете под картинкой остаётся 24px до конца секции (686 − 662)
+        padding-bottom: 24px;
+
+        .to-md({ padding-bottom: 0; });
 
         &-inner {
             display: grid;
-            grid-template-columns: minmax(0, 596fr) minmax(0, 1172fr);
+            // 596 текст + 1024 остаток до правого края экрана: в макете
+            // текстовая колонка ровно 596, картинка начинается на 782
+            grid-template-columns: minmax(0, 596fr) minmax(0, 1024fr);
             align-items: center;
             padding-left: ~"max(@{container-pad-mob}, calc((100vw - @{content-xxl}) / 2))";
 
@@ -42,10 +48,14 @@
         &-content {
             position: relative;
             z-index: 2;
+            // текст в макете выключен по центру всей секции (686), а не
+            // по картинке (662) — компенсируем нижние 24px секции
+            padding-top: 24px;
 
             // В mob-макете заголовок и лид этого блока выключены по центру,
             // а кнопка растянута почти на всю ширину контента (338 из 370).
             .to-md({
+                padding-top: 0;
                 text-align: center;
 
                 .residence__title { text-align: center; }
@@ -61,7 +71,7 @@
 
         &-text {
             .font(@fs-body, @lh-body, @fw-regular);
-            margin: 12px 0 24px;
+            margin: 15px 0 30px;
 
             .to-md({
                 .font(@fs-body-m, @lh-body-m, @fw-regular);
@@ -70,9 +80,12 @@
         }
 
         &-media {
-            // отрицательный сдвиг повторяет наезд картинки на текст из макета
-            margin-left: -8%;
-            .ratio(1172, 662);
+            // наезд картинки на текст из макета: левый край на 782 при
+            // начале второй колонки на 896 → −114 от её ширины (1024)
+            margin-left: -11.13%;
+            // в макете картинка 1172 и уходит за правый край экрана на 34 —
+            // держим видимую часть 1138×662, чтобы не плодить прокрутку
+            .ratio(1138, 662);
 
             img {
                 .cover-img();
@@ -90,6 +103,11 @@
     // текстовая колонка 534 через зазор 79. Справа остаётся 106 воздуха,
     // поэтому колонки заданы в процентах, а не во fr.
     &__tech {
+        // карточка в макете 601×548 внутри секции 556 — по 4px сверху и снизу
+        padding: 4px 0;
+
+        .to-md({ padding: 0; });
+
         &-inner {
             display: grid;
             grid-template-columns: 45.53% 40.45%;
@@ -121,12 +139,13 @@
         }
 
         &-lead {
-            margin-top: 12px;
+            margin-top: 15px;
         }
 
         &-text {
             .font(@fs-body, @lh-body, @fw-regular);
-            margin: 24px 0;
+            // интервалы из макета: лид → врезка 64, врезка → кнопка 50
+            margin: 64px 0 50px;
 
             b {
                 font-weight: @fw-bold;
@@ -150,7 +169,9 @@
     &__usage {
         &-inner {
             display: grid;
-            grid-template-columns: minmax(0, 452fr) minmax(0, 1269fr);
+            // 462 текст + 1168 остаток до правого края экрана: картинка
+            // в макете 1269 и уходит за край, держим видимую часть
+            grid-template-columns: minmax(0, 462fr) minmax(0, 1168fr);
             align-items: center;
             padding-left: ~"max(@{container-pad-mob}, calc((100vw - @{container-xxl}) / 2))";
             .full-bleed();
@@ -173,9 +194,14 @@
         }
 
         &-list {
-            margin: 24px 0 0;
-            padding-left: 1.2em;
-            list-style: decimal;
+            // в макете список отбит от лида на 55
+            margin: 55px 0 0;
+            // цифры в макете висят слева от колонки, текст начинается
+            // ровно по её левому краю
+            padding-left: 0;
+            list-style: decimal inside;
+
+            .to-md({ margin-top: 24px; });
 
             li {
                 .font(@fs-body, @lh-body, @fw-light);
@@ -189,21 +215,13 @@
         }
 
         &-media {
-            .ratio(1269, 789);
+            .ratio(1168, 789);
 
             img {
                 .cover-img();
             }
 
             .to-md({ aspect-ratio: 370 / 250; });
-        }
-
-        &-cta {
-            display: flex;
-            justify-content: center;
-            margin-top: @gap;
-
-            .to-md({ margin-top: @gap-sm; });
         }
     }
 
@@ -238,7 +256,8 @@
 
         &-text {
             .font(@fs-body, @lh-body, @fw-regular);
-            margin: 20px 0 24px;
+            // в макете заголовок → абзац и абзац → кнопка отбиты на 47
+            margin: 47px 0;
             max-width: 377px; // ширина абзаца из макета
 
             .to-md({

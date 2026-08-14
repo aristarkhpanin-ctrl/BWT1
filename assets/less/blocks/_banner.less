@@ -46,7 +46,7 @@
         // сохраняем (нужен поисковикам), прячем только визуально.
         &-text {
             .font(@fs-body, @lh-body, @fw-regular);
-            margin-top: 12px;
+            margin-top: 15px;
             max-width: 795px;
 
             .to-md({ display: none; });
@@ -61,9 +61,16 @@
             .to-md({  height: 543px; });
         }
 
-        // Вилла в сумерках — 1920×810, только заголовок
+        // Вилла в сумерках — 1920×810, только заголовок.
+        // Заголовок в макете поднят выше, чем на баннере усадьбы.
         &_dusk {
             height: 810px;
+
+            .residence__banner-inner { padding-bottom: 102px; }
+
+            .to-md({
+                .residence__banner-inner { padding-bottom: 40px; }
+            });
 
             .to-xxl({ height: 700px; });
             .to-lg({  height: 580px; });

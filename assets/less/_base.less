@@ -87,9 +87,11 @@
         .section-title();
     }
 
+    // Ритм из макета один и тот же во всех секциях:
+    // заголовок → лид 15px, лид → контент 30px (`__head`).
     &__lead {
         .section-lead();
-        margin-top: 12px;
+        margin-top: 15px;
     }
 
     // Заголовок с выключкой влево — «Технологии водоподготовки BWT» и т.п.
@@ -106,6 +108,18 @@
     .to-md({
         scroll-margin-top: 60px;
     });
+}
+
+// Кнопки: в макете подпись везде 16px, высота 40, боковые поля ~22.
+// Штатная `.btn` сайта даёт 14px и высоту 32–34, из-за чего блоки
+// с кнопкой садились выше макета.
+.residence .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 22px;
+    .font(@fs-body, @lh-body, @fw-regular);
 }
 
 // Шаблон сайта объявляет `.newFontCyr h2 { font-weight: 600 }` — специфичность

@@ -51,9 +51,18 @@
             &-inner {
                 position: relative;
                 z-index: 2;
-                padding-bottom: 60px;
+                // в макете текст отбит от низа баннера на 80
+                padding-bottom: 80px;
 
                 .to-md({ padding-bottom: 30px; });
+
+                // текстовый блок этого баннера в макете уже, чем у остальных
+                .residence__banner-title,
+                .residence__banner-text {
+                    max-width: 601px;
+
+                    .to-md({ max-width: none; });
+                }
             }
         }
 
@@ -84,7 +93,7 @@
 
         &-lead {
             .font(@fs-lead, @lh-lead, @fw-regular);
-            margin-top: 20px;
+            margin-top: 15px;
             max-width: 1100px;
 
             .to-md({
@@ -104,7 +113,8 @@
 
         // тёмный фон за карточкой
         background: linear-gradient(to bottom, @white 0, @white 90px, @card-dark-1 90px, @card-dark-1 100%);
-        padding-bottom: 60px;
+        // тёмная полоса в макете 511 при карточке 468 — снизу остаётся 42
+        padding-bottom: 42px;
 
         .to-md({
             background: linear-gradient(to bottom, @white 0, @white 40px, @card-dark-1 40px, @card-dark-1 100%);

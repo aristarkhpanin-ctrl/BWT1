@@ -15,7 +15,8 @@
         grid-template-columns: minmax(0, 622fr) minmax(0, 509fr);
         align-items: center;
         gap: 97px;
-        padding: 30px 46px 20px;
+        // в макете внутренний блок отбит сверху на 30 и снизу на 34
+        padding: 30px 46px 34px;
         border-radius: @radius;
         background: @white;
         box-shadow: @shadow-card;
@@ -34,7 +35,8 @@
     &__form {
         display: grid;
         grid-template-columns: minmax(0, 1fr);
-        gap: 14px;
+        // шаг полей в макете 38 при высоте поля 34
+        gap: 4px;
 
         // Поля-подчёркивания, как в макете: без рамки, только нижняя линия
         .input__field {
@@ -75,13 +77,15 @@
         &-captcha {
             min-width: 0;
             min-height: 118px;
-            margin-top: 6px;
+            // в макете капча отбита от последнего поля на 30 (26 + gap 4)
+            margin-top: 26px;
         }
 
         &-note {
             .font(@fs-fine, @lh-fine, @fw-regular);
             color: @dark-blue;
-            margin-top: 12px;
+            // от кнопки до сноски в макете 23 (19 + gap 4)
+            margin-top: 19px;
 
             a {
                 text-decoration: underline;
@@ -91,7 +95,7 @@
 
     &__request-intro {
         .residence__lead {
-            margin-top: 12px;
+            margin-top: 15px;
         }
     }
 }

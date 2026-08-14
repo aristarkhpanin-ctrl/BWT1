@@ -17,8 +17,9 @@
             }
         }
 
+        // блоки кейса отбиты друг от друга на 60, как секции в макете
         &-case {
-            margin-top: @gap;
+            margin-top: @section-gap;
 
             .to-md({ margin-top: @gap-sm; });
         }
@@ -83,7 +84,7 @@
         &-video {
             position: relative;
             max-width: 901px;
-            margin: @gap auto 0;
+            margin: @section-gap auto 0;
             border-radius: @radius;
             overflow: hidden;
             cursor: pointer;

@@ -69,12 +69,19 @@
 
         .to-md({ padding: 20px 0; });
 
+        // В макете ряд ссылок — auto-layout из «Link:margin» шириной
+        // «текст + 40 слева + 40 справа», и кнопка отбита от последней
+        // ссылки такими же 40px. На 1920 группа нарисована со сдвигом
+        // вправо (её вставили из макета 1440, не переоткрыв по центру) —
+        // на 1440 та же группа стоит ровно по центру, поэтому центруем.
         > .container {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 24px;
+            gap: 40px;
             min-height: 55px;
+
+            .to-lg({ gap: @gap-sm; });
 
             .to-md({
                 justify-content: space-between;
@@ -94,8 +101,14 @@
             }
 
             li {
-                padding: 0 24px;
+                padding: 0 40px;
             }
+
+            // ниже 1200 контейнер сайта сужается до 970 — ряд с полями 40
+            // туда уже не влезает
+            .to-xl({
+                li { padding: 0 24px; }
+            });
 
             .to-lg({
                 li { padding: 0 14px; }
@@ -172,6 +185,10 @@
         // .btn__accent с сайта уже даёт фон @pink и белый текст.
         &-cta {
             white-space: nowrap;
+            // ширина кнопки из макета — 187 при подписи 137
+            padding: 0 25px;
+
+            .to-lg({ padding: 0 14px; });
 
             .to-md({
                 .font(@fs-body-m, @lh-body, @fw-regular);
