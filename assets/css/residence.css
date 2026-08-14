@@ -812,6 +812,27 @@
     aspect-ratio: 370 / 250;
   }
 }
+.residence__usage-cta > .container {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 767.98px) {
+  .residence__usage-cta {
+    display: none;
+  }
+}
+.residence__usage-cta_mob {
+  display: none;
+}
+@media (max-width: 767.98px) {
+  .residence__usage-cta_mob {
+    display: block;
+  }
+  .residence__usage-cta_mob .btn {
+    width: calc(100% - 10px);
+    margin: 0 auto;
+  }
+}
 .residence__cta-card {
   display: grid;
   grid-template-columns: minmax(0, 525fr) minmax(0, 795fr);
