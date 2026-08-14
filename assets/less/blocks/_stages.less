@@ -53,8 +53,10 @@
             text-transform: uppercase;
             margin: 0;
 
+            // в мобильном макете заголовок карточки выключен по центру
             .to-md({
-                .font(@fs-h2-m, @lh-h2-m, @fw-bold);
+                .font(16px, 21px, @fw-bold);
+                text-align: center;
             });
         }
 
@@ -64,7 +66,9 @@
             max-width: 1100px;
 
             .to-md({
-                .font(@fs-lead-m, @lh-lead-m, @fw-regular);
+                .font(@fs-body-m, 18px, @fw-regular);
+                text-align: center;
+                margin-top: 14px;
             });
         }
     }
@@ -87,25 +91,48 @@
     }
 
     // ─── Степпер ─────────────────────────────────────────────────────────────
-    // В макете он не растянут по карточке, а занимает 851px слева:
-    // стрелка 64 + зазор 51 + лента цифр 621 + зазор 51 + стрелка 64.
+    // Раскладка у двух макетов принципиально разная, поэтому сетка, а не flex:
+    //
+    //   1920/1440 — стрелка 64 | лента цифр 621 | стрелка 64, зазор 51,
+    //               подпись этапа под всем этим (блок 851px слева);
+    //   mob       — лента цифр во всю ширину, под ней подпись,
+    //               а стрелки уезжают в отдельный ряд по краям.
     &__stepper {
-        display: flex;
-        align-items: flex-start;
-        gap: 51px;
+        display: grid;
+        grid-template-columns: 64px minmax(0, 621px) 64px;
+        grid-template-areas:
+            'prev  track next'
+            'label label label';
+        align-items: start;
+        column-gap: 51px;
+        row-gap: 29px;
         max-width: 851px;
         margin-top: 60px;
 
-        .to-xxl({ gap: 30px; });
-
-        .to-md({
-            margin-top: @gap-sm;
-            gap: @gap-xs;
-            max-width: none;
+        .to-xxl({
+            grid-template-columns: 64px minmax(0, 1fr) 64px;
+            column-gap: 30px;
         });
 
+        .to-md({
+            // отступ ленты от края карточки — 26px, как в мобильном макете
+            grid-template-columns: 38px 1fr 38px;
+            grid-template-areas:
+                'track track track'
+                'label label label'
+                'prev  .     next';
+            column-gap: 0;
+            row-gap: 16px;
+            max-width: none;
+            margin: @gap-sm 26px 0;
+        });
+
+        @media (max-width: 379.98px) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
         &-arrow {
-            flex: 0 0 auto;
             width: 64px;
             height: 64px;
             display: inline-flex;
@@ -129,12 +156,25 @@
                 cursor: default;
             }
 
+            // В мобильном макете стрелки инвертированы: белый круг
+            // с тёмно-синим шевроном, и стоят под лентой цифр.
             .to-md({
                 width: 38px;
                 height: 38px;
+                margin-top: 0;
+                // замер по рендеру макета: #808794 на фоне #020B25 —
+                // это белый с прозрачностью 50%
+                background: rgba(255, 255, 255, .5);
+                color: @dark-blue;
+                backdrop-filter: none;
+
+                &:hover:not(:disabled) { background: rgba(255, 255, 255, .65); }
 
                 svg { width: 7px; height: 11px; }
             });
+
+            &_prev { grid-area: prev; }
+            &_next { grid-area: next; justify-self: end; }
         }
 
         // Стрелки в макете по вертикали стоят вровень с лентой цифр
@@ -143,7 +183,7 @@
         }
 
         &-track {
-            flex: 1 1 auto;
+            grid-area: track;
             min-width: 0;
         }
 
@@ -259,9 +299,10 @@
         }
 
         &-label {
+            grid-area: label;
             .font(@fs-card-sm, @lh-card-sm, @fw-regular);
             color: @white;
-            margin-top: 29px;
+            margin: 0;
 
             .to-md({
                 .font(@fs-body-m, @lh-body-m, @fw-regular);

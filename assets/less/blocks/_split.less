@@ -19,10 +19,15 @@
             display: grid;
             grid-template-columns: minmax(0, 596fr) minmax(0, 1172fr);
             align-items: center;
-            padding-left: calc(~"(100vw - @{content-xxl}) / 2");
+            padding-left: ~"max(@{container-pad-mob}, calc((100vw - @{content-xxl}) / 2))";
 
             .to-xxl({
-                padding-left: calc(~"(100vw - @{content-xl}) / 2");
+                padding-left: ~"max(@{container-pad-mob}, calc((100vw - @{content-xl}) / 2))";
+            });
+
+            // 992–1199: контейнер сайта сужается до 990
+            .to-xl({
+                padding-left: ~"max(@{container-pad-mob}, calc((100vw - 970px) / 2))";
             });
 
             .to-lg({ padding-left: @container-pad-mob; });
@@ -132,11 +137,15 @@
             display: grid;
             grid-template-columns: minmax(0, 452fr) minmax(0, 1269fr);
             align-items: center;
-            padding-left: calc(~"(100vw - @{container-xxl}) / 2");
+            padding-left: ~"max(@{container-pad-mob}, calc((100vw - @{container-xxl}) / 2))";
             .full-bleed();
 
             .to-xxl({
-                padding-left: calc(~"(100vw - @{container-xl}) / 2");
+                padding-left: ~"max(@{container-pad-mob}, calc((100vw - @{container-xl}) / 2))";
+            });
+
+            .to-xl({
+                padding-left: ~"max(@{container-pad-mob}, calc((100vw - 990px) / 2))";
             });
 
             .to-lg({ padding-left: @container-pad-mob; });

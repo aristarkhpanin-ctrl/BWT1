@@ -104,6 +104,11 @@
 .residence .residence__faq-heading {
   font-weight: 700;
 }
+@media (max-width: 767.98px) {
+  .br-desktop {
+    display: none;
+  }
+}
 .residence__hero {
   position: relative;
   display: flex;
@@ -376,8 +381,8 @@
     left: 18px;
     width: auto;
     right: 18px;
-    font-size: 18px;
-    line-height: 23px;
+    font-size: 20px;
+    line-height: 26px;
     font-weight: 400;
   }
 }
@@ -556,11 +561,16 @@
   display: grid;
   grid-template-columns: minmax(0, 596fr) minmax(0, 1172fr);
   align-items: center;
-  padding-left: calc((100vw - 1320px) / 2);
+  padding-left: max(20px, calc((100vw - 1320px) / 2));
 }
 @media (max-width: 1459.98px) {
   .residence__split-inner {
-    padding-left: calc((100vw - 1150px) / 2);
+    padding-left: max(20px, calc((100vw - 1150px) / 2));
+  }
+}
+@media (max-width: 1199.98px) {
+  .residence__split-inner {
+    padding-left: max(20px, calc((100vw - 970px) / 2));
   }
 }
 @media (max-width: 991.98px) {
@@ -668,14 +678,19 @@
   display: grid;
   grid-template-columns: minmax(0, 452fr) minmax(0, 1269fr);
   align-items: center;
-  padding-left: calc((100vw - 1340px) / 2);
+  padding-left: max(20px, calc((100vw - 1340px) / 2));
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
 @media (max-width: 1459.98px) {
   .residence__usage-inner {
-    padding-left: calc((100vw - 1170px) / 2);
+    padding-left: max(20px, calc((100vw - 1170px) / 2));
+  }
+}
+@media (max-width: 1199.98px) {
+  .residence__usage-inner {
+    padding-left: max(20px, calc((100vw - 990px) / 2));
   }
 }
 @media (max-width: 991.98px) {
@@ -987,9 +1002,10 @@
 }
 @media (max-width: 767.98px) {
   .residence__stages-title {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 21px;
     font-weight: 700;
+    text-align: center;
   }
 }
 .residence__stages-lead {
@@ -1001,9 +1017,11 @@
 }
 @media (max-width: 767.98px) {
   .residence__stages-lead {
-    font-size: 16px;
-    line-height: 21px;
+    font-size: 14px;
+    line-height: 18px;
     font-weight: 400;
+    text-align: center;
+    margin-top: 14px;
   }
 }
 .residence__stages.residence__section {
@@ -1021,26 +1039,38 @@
   }
 }
 .residence__stepper {
-  display: flex;
-  align-items: flex-start;
-  gap: 51px;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 621px) 64px;
+  grid-template-areas: 'prev  track next' 'label label label';
+  align-items: start;
+  column-gap: 51px;
+  row-gap: 29px;
   max-width: 851px;
   margin-top: 60px;
 }
 @media (max-width: 1459.98px) {
   .residence__stepper {
-    gap: 30px;
+    grid-template-columns: 64px minmax(0, 1fr) 64px;
+    column-gap: 30px;
   }
 }
 @media (max-width: 767.98px) {
   .residence__stepper {
-    margin-top: 20px;
-    gap: 10px;
+    grid-template-columns: 38px 1fr 38px;
+    grid-template-areas: 'track track track' 'label label label' 'prev  .     next';
+    column-gap: 0;
+    row-gap: 16px;
     max-width: none;
+    margin: 20px 26px 0;
+  }
+}
+@media (max-width: 379.98px) {
+  .residence__stepper {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 .residence__stepper-arrow {
-  flex: 0 0 auto;
   width: 64px;
   height: 64px;
   display: inline-flex;
@@ -1066,17 +1096,31 @@
   .residence__stepper-arrow {
     width: 38px;
     height: 38px;
+    margin-top: 0;
+    background: rgba(255, 255, 255, 0.5);
+    color: #00174B;
+    backdrop-filter: none;
+  }
+  .residence__stepper-arrow:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.65);
   }
   .residence__stepper-arrow svg {
     width: 7px;
     height: 11px;
   }
 }
+.residence__stepper-arrow_prev {
+  grid-area: prev;
+}
+.residence__stepper-arrow_next {
+  grid-area: next;
+  justify-self: end;
+}
 .residence__stepper-arrow {
   margin-top: -11px;
 }
 .residence__stepper-track {
-  flex: 1 1 auto;
+  grid-area: track;
   min-width: 0;
 }
 .residence__stepper-list {
@@ -1181,11 +1225,12 @@
   }
 }
 .residence__stepper-label {
+  grid-area: label;
   font-size: 18px;
   line-height: 23px;
   font-weight: 400;
   color: #FFFFFF;
-  margin-top: 29px;
+  margin: 0;
 }
 @media (max-width: 767.98px) {
   .residence__stepper-label {
@@ -1511,7 +1556,7 @@
   width: 110.98%;
   margin-left: -5.49%;
 }
-@media (max-width: 991.98px) {
+@media (max-width: 1199.98px) {
   .residence__pool-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     width: 100%;
