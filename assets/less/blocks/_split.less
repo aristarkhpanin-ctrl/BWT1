@@ -17,7 +17,8 @@
         // в макете под картинкой остаётся 24px до конца секции (686 − 662)
         padding-bottom: 24px;
 
-        .to-md({ padding-bottom: 0; });
+        // в mob-макете под картинкой остаётся 18px (532 − 208 − остальное)
+        .to-md({ padding-bottom: 18px; });
 
         &-inner {
             display: grid;
@@ -60,11 +61,13 @@
 
                 .residence__title { text-align: center; }
 
+                // именно flex, а не block: у `.btn` вертикальная центровка
+                // подписи держится на inline-flex, и от `display: block`
+                // подпись прилипала к верху кнопки
                 .btn {
-                    display: block;
+                    display: flex;
                     width: ~"calc(100% - 32px)";
                     margin: 0 auto;
-                    text-align: center;
                 }
             });
         }
@@ -92,9 +95,10 @@
                 .cover-img();
             }
 
+            // в mob-макете картинка 370×208, а не 370×250
             .to-md({
                 margin-left: 0;
-                aspect-ratio: 370 / 250;
+                aspect-ratio: 370 / 208;
             });
         }
     }
