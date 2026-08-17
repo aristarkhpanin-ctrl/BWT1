@@ -32,20 +32,14 @@
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// А ЭТИ ДВА НУЖНЫ И НА ПРОДЕ — в шаблоне сайта их нет.
+// А ЭТИ ТРИ НУЖНЫ И НА ПРОДЕ — в шаблоне сайта их нет.
 //
-// Макет нарисован четырьмя резами BWT Cyr, а сайт раздаёт три. Не хватает:
-//   BWTCyr-LightSubline     — 13 текстов (подписи карточек «Комфорт», врезка
-//                             в «Технологиях», список «где важны», «ванная»);
-//                             шире Light Text на 8–9% и заметно плотнее;
-//   BWTCyr-BoldCopyHeadline — 2 заголовка («частный бассейн в Подмосковье»
-//                             и заголовок FAQ); уже BoldHead на 6%.
-//
-// Четвёртое имя из макета, BWTCyr-BoldHeadline («BWT Cyr - Headline.ttf»),
-// намеренно НЕ подключено: замер по всей кириллице и латинице дал ровно те же
-// ширины, что у BoldHead, до сотой доли пикселя, а картинка расходится
-// на 0,03% пикселей в трёх-четырёх глифах. Ради этого тащить на прод
-// ещё 100 КБ шрифта на три заголовка смысла нет.
+// Макет нарисован пятью резами BWT Cyr, а сайт раздаёт три:
+//   BWTCyr-LightSubline     — подписи карточек «Комфорт», врезка
+//                             в «Технологиях», список «где важны», «ванная»;
+//   BWTCyr-BoldCopyHeadline — «частный бассейн в Подмосковье» и заголовок FAQ;
+//   BWTCyr-BoldHeadline     — «Единая инженерная логика», «Комфорт, который
+//                             не требует внимания» и одна подпись в bento.
 //
 // Семейства отдельные, а не веса в 'Cyr': так порядок подключения CSS
 // ни на что не влияет.
@@ -62,6 +56,14 @@
     font-style: normal;
     font-weight: 700;
     src: url('../fonts/BWT Cyr - Copy Headline.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cyr Headline';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/BWT Cyr - Headline.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -144,9 +146,10 @@
     });
 }
 
-// Кнопки: в макете подпись везде 16px, высота 40, боковые поля ~22.
-// Штатная `.btn` сайта даёт 14px и высоту 32–34, из-за чего блоки
-// с кнопкой садились выше макета.
+// Кнопки: высота 40 и подпись 16 во всех трёх макетах. Штатная `.btn`
+// сайта даёт 14px и высоту 32–34, из-за чего блоки с кнопкой садились
+// выше макета. Отдельные кнопки, у которых в макете 1440/mob подпись 14,
+// понижены точечно — рядом со своими блоками.
 .residence .btn {
     display: inline-flex;
     align-items: center;
@@ -156,13 +159,38 @@
     .font(@fs-body, @lh-body, @fw-regular);
 }
 
+// Кнопки, у которых в мобильном макете подпись 14, а не 16
+.residence__tech-content .btn,
+.residence__cta-content .btn,
+.residence__form .form__submit {
+    @media (max-width: (@bp-md - .02px)) {
+        font-size: @fs-body-m;
+        line-height: @lh-body-m;
+    }
+}
+
+// Розовая кнопка навигации: в макете 1440 её подпись 14, а не 16
+.residence .residence__nav-cta {
+    @media (max-width: (@bp-xxl - .02px)) {
+        font-size: @fs-body-m;
+        line-height: @lh-body-m;
+    }
+}
+
 // Шаблон сайта объявляет `.newFontCyr h2 { font-weight: 600 }` — специфичность
 // (0,1,1) перебивает наши одноклассовые правила. Возвращаем вес из макета.
 .residence .residence__title,
+.residence .residence__banner-title,
 .residence .residence__stages-title,
 .residence .residence__pool-case-title,
 .residence .residence__comfort-title,
 .residence .residence__faq-heading {
+    font-weight: @fw-bold;
+}
+
+// Заголовок последней карточки типов объектов в макете набран BoldHead,
+// у остальных шести — Regular. Так во всех трёх фреймах, это не случайность.
+.residence .residence__object:last-child .residence__object-title {
     font-weight: @fw-bold;
 }
 
@@ -180,4 +208,14 @@
 .residence .residence__pool-case-title,
 .residence .residence__faq .residence__title {
     font-family: @font-copy;
+}
+
+// Три текста, набранных в макете BWTCyr-BoldHeadline: заголовок баннера
+// «Единая инженерная логика», заголовок секции «Комфорт» и подпись
+// последней плитки bento. У остальных трёх плиток bento в макете BoldHead —
+// это не наша непоследовательность, так нарисовано.
+.residence .residence__stages-banner .residence__banner-title,
+.residence .residence__comfort > .container > .residence__head > .residence__title,
+.residence .residence__approach-headline figcaption {
+    font-family: @font-headline;
 }

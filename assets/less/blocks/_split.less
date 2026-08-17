@@ -73,8 +73,9 @@
             .font(@fs-body, @lh-body, @fw-regular);
             margin: 15px 0 30px;
 
+            // в mob-макете этот абзац крупнее общей мобильной шкалы — 16
             .to-md({
-                .font(@fs-body-m, @lh-body-m, @fw-regular);
+                .font(@fs-body, @lh-body, @fw-regular);
                 margin: 10px 0 @gap-sm;
             });
         }
@@ -292,8 +293,9 @@
             margin: 47px 0;
             max-width: 377px; // ширина абзаца из макета
 
+            // в mob-макете абзац финального CTA — 16
             .to-md({
-                .font(@fs-body-m, @lh-body-m, @fw-regular);
+                .font(@fs-body, 18px, @fw-regular);
                 margin: 10px 0 @gap-sm;
                 max-width: none;
             });

@@ -43,6 +43,9 @@
             text-transform: uppercase;
             margin: 0;
 
+            // в макете 1440 заголовок героя мельче — 28, а не 32
+            .to-xxl({ .font(@fs-h2, @lh-h2, @fw-bold); });
+
             .to-md({
                 .font(@fs-h1-m, @lh-h1-m, @fw-bold);
             });
@@ -148,7 +151,8 @@
             cursor: pointer;
             color: @dark-blue;
             font-family: inherit;
-            .font(@fs-body-m, @lh-body, @fw-regular);
+            // кегль из mob-макета
+            .font(17.5px, 26px, @fw-regular);
         }
 
         &-chevron {

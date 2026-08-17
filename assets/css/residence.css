@@ -33,6 +33,13 @@
   src: url('../fonts/BWT Cyr - Copy Headline.ttf') format('truetype');
   font-display: swap;
 }
+@font-face {
+  font-family: 'Cyr Headline';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/BWT Cyr - Headline.ttf') format('truetype');
+  font-display: swap;
+}
 .residence {
   font-family: 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   color: #00174B;
@@ -121,11 +128,29 @@
   line-height: 21px;
   font-weight: 400;
 }
+@media (max-width: 767.98px) {
+  .residence__tech-content .btn,
+  .residence__cta-content .btn,
+  .residence__form .form__submit {
+    font-size: 14px;
+    line-height: 19px;
+  }
+}
+@media (max-width: 1459.98px) {
+  .residence .residence__nav-cta {
+    font-size: 14px;
+    line-height: 19px;
+  }
+}
 .residence .residence__title,
+.residence .residence__banner-title,
 .residence .residence__stages-title,
 .residence .residence__pool-case-title,
 .residence .residence__comfort-title,
 .residence .residence__faq-heading {
+  font-weight: 700;
+}
+.residence .residence__object:last-child .residence__object-title {
   font-weight: 700;
 }
 @media (max-width: 767.98px) {
@@ -136,6 +161,11 @@
 .residence .residence__pool-case-title,
 .residence .residence__faq .residence__title {
   font-family: 'Cyr Copy', 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+.residence .residence__stages-banner .residence__banner-title,
+.residence .residence__comfort > .container > .residence__head > .residence__title,
+.residence .residence__approach-headline figcaption {
+  font-family: 'Cyr Headline', 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 .residence__hero {
   position: relative;
@@ -197,6 +227,13 @@
   font-weight: 700;
   text-transform: uppercase;
   margin: 0;
+}
+@media (max-width: 1459.98px) {
+  .residence__hero-title {
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 700;
+  }
 }
 @media (max-width: 767.98px) {
   .residence__hero-title {
@@ -304,8 +341,8 @@
   cursor: pointer;
   color: #00174B;
   font-family: inherit;
-  font-size: 14px;
-  line-height: 21px;
+  font-size: 17.5px;
+  line-height: 26px;
   font-weight: 400;
 }
 .residence__nav-chevron {
@@ -458,8 +495,8 @@
     left: 18px;
     right: 18px;
     width: auto;
-    font-size: 12px;
-    line-height: 16px;
+    font-size: 16px;
+    line-height: 21px;
     font-weight: 400;
   }
 }
@@ -676,8 +713,8 @@
 }
 @media (max-width: 767.98px) {
   .residence__split-text {
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 16px;
+    line-height: 21px;
     font-weight: 400;
     margin: 10px 0 20px;
   }
@@ -890,8 +927,8 @@
 }
 @media (max-width: 767.98px) {
   .residence__cta-text {
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 16px;
+    line-height: 18px;
     font-weight: 400;
     margin: 10px 0 20px;
     max-width: none;
@@ -1022,8 +1059,8 @@
     right: 16px;
     width: auto;
     bottom: 16px;
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 18px;
+    line-height: 23px;
     font-weight: 700;
   }
 }
@@ -1662,6 +1699,13 @@
 .residence__request-intro .residence__lead {
   margin-top: 15px;
 }
+@media (max-width: 767.98px) {
+  .residence__request-intro .residence__lead {
+    font-size: 14px;
+    line-height: 19px;
+    font-weight: 400;
+  }
+}
 .residence__pool-main {
   max-width: 901px;
   margin: 0 auto;
@@ -1680,7 +1724,7 @@
 }
 @media (max-width: 767.98px) {
   .residence__pool-case {
-    margin-top: 20px;
+    margin-top: 34px;
   }
 }
 .residence__pool-case-title {
@@ -1746,7 +1790,7 @@
 }
 @media (max-width: 767.98px) {
   .residence__pool-gallery-item {
-    width: 200px;
+    width: 277px;
   }
 }
 .residence__pool-gallery-item img {

@@ -96,6 +96,9 @@
     &__request-intro {
         .residence__lead {
             margin-top: 15px;
+
+            // в mob-макете лид формы мельче общей мобильной шкалы — 14
+            .to-md({ .font(@fs-body-m, @lh-body-m, @fw-regular); });
         }
     }
 }
