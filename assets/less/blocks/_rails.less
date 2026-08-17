@@ -65,27 +65,6 @@
                 .font(20px, 26px, @fw-regular);
             });
         }
-
-        // Подпись под заголовком у последней карточки
-        &-note {
-            position: absolute;
-            z-index: 2;
-            top: 108px;
-            left: 22px;
-            width: 190px;
-            margin: 0;
-            .font(@fs-body, @lh-body, @fw-regular);
-            color: @dark-blue;
-
-            .to-md({
-                top: 78px;
-                left: 18px;
-                right: 18px;
-                width: auto;
-                // кегль из mob-макета
-                .font(@fs-body, @lh-body, @fw-regular);
-            });
-        }
     }
 
     // ─── Лента оборудования ──────────────────────────────────────────────────

@@ -150,9 +150,6 @@
 .residence .residence__faq-heading {
   font-weight: 700;
 }
-.residence .residence__object:last-child .residence__object-title {
-  font-weight: 700;
-}
 @media (max-width: 767.98px) {
   .br-desktop {
     display: none;
@@ -474,29 +471,6 @@
     right: 18px;
     font-size: 20px;
     line-height: 26px;
-    font-weight: 400;
-  }
-}
-.residence__object-note {
-  position: absolute;
-  z-index: 2;
-  top: 108px;
-  left: 22px;
-  width: 190px;
-  margin: 0;
-  font-size: 16px;
-  line-height: 21px;
-  font-weight: 400;
-  color: #00174B;
-}
-@media (max-width: 767.98px) {
-  .residence__object-note {
-    top: 78px;
-    left: 18px;
-    right: 18px;
-    width: auto;
-    font-size: 16px;
-    line-height: 21px;
     font-weight: 400;
   }
 }
