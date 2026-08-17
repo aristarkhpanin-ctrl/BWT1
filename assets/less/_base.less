@@ -31,6 +31,37 @@
     font-display: swap;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// А ЭТИ ДВА НУЖНЫ И НА ПРОДЕ — в шаблоне сайта их нет.
+//
+// Макет нарисован четырьмя резами BWT Cyr, а сайт раздаёт три. Не хватает:
+//   BWTCyr-LightSubline     — 13 текстов (подписи карточек «Комфорт», врезка
+//                             в «Технологиях», список «где важны», «ванная»);
+//                             шире Light Text на 8–9% и заметно плотнее;
+//   BWTCyr-BoldCopyHeadline — 2 заголовка («частный бассейн в Подмосковье»
+//                             и заголовок FAQ); уже BoldHead на 6%.
+// (Четвёртое имя из макета, BWTCyr-BoldHeadline, — это тот же контур, что
+// BoldHead: замер совпал до пикселя, отдельный файл не нужен.)
+//
+// Семейства отдельные, а не веса в 'Cyr': так порядок подключения CSS
+// ни на что не влияет. Пока файлов нет, семейство не подхватывается и
+// текст рисуется штатным 'Cyr' того же веса — как было до этого.
+@font-face {
+    font-family: 'Cyr Subline';
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/BWT Cyr - Light Subline.ttf') format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cyr Copy';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/BWT Cyr-BoldCopyHeadline.ttf') format('truetype');
+    font-display: swap;
+}
+
 // Корневой блок лендинга.
 // Класс .newFontCyr вешается в разметке рядом — он приходит с сайта и
 // переключает семейство на «Cyr», как это сделано у .pools-new-design-wooden.
@@ -139,4 +170,11 @@
     @media (max-width: (@bp-md - .02px)) {
         display: none;
     }
+}
+
+// Два заголовка, набранных в макете BWTCyr-BoldCopyHeadline:
+// заголовок кейса о бассейне и заголовок блока вопросов.
+.residence .residence__pool-case-title,
+.residence .residence__faq .residence__title {
+    font-family: @font-copy;
 }

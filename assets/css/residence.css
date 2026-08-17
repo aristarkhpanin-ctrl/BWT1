@@ -19,6 +19,20 @@
   src: url('../fonts/BWT Cyr-BoldHead.ttf') format('truetype');
   font-display: swap;
 }
+@font-face {
+  font-family: 'Cyr Subline';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/BWT Cyr - Light Subline.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cyr Copy';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/BWT Cyr-BoldCopyHeadline.ttf') format('truetype');
+  font-display: swap;
+}
 .residence {
   font-family: 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   color: #00174B;
@@ -118,6 +132,10 @@
   .br-desktop {
     display: none;
   }
+}
+.residence .residence__pool-case-title,
+.residence .residence__faq .residence__title {
+  font-family: 'Cyr Copy', 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 .residence__hero {
   position: relative;
@@ -724,19 +742,21 @@
   margin-top: 15px;
 }
 .residence__tech-text {
+  font-family: 'Cyr Subline', 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   font-size: 16px;
   line-height: 21px;
-  font-weight: 400;
+  font-weight: 300;
   margin: 64px 0 50px;
 }
 .residence__tech-text b {
+  font-family: 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   font-weight: 700;
 }
 @media (max-width: 767.98px) {
   .residence__tech-text {
     font-size: 14px;
     line-height: 19px;
-    font-weight: 400;
+    font-weight: 300;
     margin: 20px 0;
   }
 }
@@ -785,6 +805,7 @@
   }
 }
 .residence__usage-list li {
+  font-family: 'Cyr Subline', 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   font-size: 16px;
   line-height: 21px;
   font-weight: 300;
@@ -1425,6 +1446,7 @@
   }
 }
 .residence__comfort-text {
+  font-family: 'Cyr Subline', 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   font-size: 16px;
   line-height: 21px;
   font-weight: 300;
@@ -1477,6 +1499,7 @@
   bottom: 11.5%;
   text-align: center;
   color: #FFFFFF;
+  font-family: 'Cyr Subline', 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   font-size: 28px;
   line-height: 36px;
   font-weight: 300;

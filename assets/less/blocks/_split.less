@@ -142,17 +142,21 @@
             margin-top: 15px;
         }
 
+        // Врезка в макете набрана BWTCyr-LightSubline 300, жирным выделено
+        // только «Европейское производство и инженерный подход».
         &-text {
-            .font(@fs-body, @lh-body, @fw-regular);
+            font-family: @font-subline;
+            .font(@fs-body, @lh-body, @fw-light);
             // интервалы из макета: лид → врезка 64, врезка → кнопка 50
             margin: 64px 0 50px;
 
             b {
+                font-family: @font;
                 font-weight: @fw-bold;
             }
 
             .to-md({
-                .font(@fs-body-m, @lh-body-m, @fw-regular);
+                .font(@fs-body-m, @lh-body-m, @fw-light);
                 margin: @gap-sm 0;
             });
         }
@@ -204,6 +208,7 @@
             .to-md({ margin-top: 24px; });
 
             li {
+                font-family: @font-subline;
                 .font(@fs-body, @lh-body, @fw-light);
                 text-transform: uppercase;
                 margin-bottom: 10px;

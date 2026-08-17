@@ -24,6 +24,13 @@
 // /local/lib/fonts/Cyr/. Класс-переключатель — .newFontCyr.
 @font: 'Cyr', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 
+// Два начертания BWT Cyr, которыми нарисован макет, но которых нет ни в
+// присланном архиве, ни на bwt.ru (см. README, раздел «Шрифт»).
+// Заданы отдельными семействами с откатом на штатное `Cyr`: пока файлов
+// нет, текст рисуется как раньше, ничего не ломается.
+@font-subline: 'Cyr Subline', @font;  // подписи и списки, вес 300
+@font-copy:    'Cyr Copy',    @font;  // два заголовка, вес 700
+
 @fw-light:   300;
 @fw-regular: 400;
 @fw-bold:    700;
