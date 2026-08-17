@@ -40,17 +40,20 @@
 //                             шире Light Text на 8–9% и заметно плотнее;
 //   BWTCyr-BoldCopyHeadline — 2 заголовка («частный бассейн в Подмосковье»
 //                             и заголовок FAQ); уже BoldHead на 6%.
-// (Четвёртое имя из макета, BWTCyr-BoldHeadline, — это тот же контур, что
-// BoldHead: замер совпал до пикселя, отдельный файл не нужен.)
+//
+// Четвёртое имя из макета, BWTCyr-BoldHeadline («BWT Cyr - Headline.ttf»),
+// намеренно НЕ подключено: замер по всей кириллице и латинице дал ровно те же
+// ширины, что у BoldHead, до сотой доли пикселя, а картинка расходится
+// на 0,03% пикселей в трёх-четырёх глифах. Ради этого тащить на прод
+// ещё 100 КБ шрифта на три заголовка смысла нет.
 //
 // Семейства отдельные, а не веса в 'Cyr': так порядок подключения CSS
-// ни на что не влияет. Пока файлов нет, семейство не подхватывается и
-// текст рисуется штатным 'Cyr' того же веса — как было до этого.
+// ни на что не влияет.
 @font-face {
     font-family: 'Cyr Subline';
     font-style: normal;
     font-weight: 300;
-    src: url('../fonts/BWT Cyr - Light Subline.ttf') format('truetype');
+    src: url('../fonts/BWT Cyr - Subline.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -58,7 +61,7 @@
     font-family: 'Cyr Copy';
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/BWT Cyr-BoldCopyHeadline.ttf') format('truetype');
+    src: url('../fonts/BWT Cyr - Copy Headline.ttf') format('truetype');
     font-display: swap;
 }
 

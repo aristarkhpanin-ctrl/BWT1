@@ -23,14 +23,14 @@
   font-family: 'Cyr Subline';
   font-style: normal;
   font-weight: 300;
-  src: url('../fonts/BWT Cyr - Light Subline.ttf') format('truetype');
+  src: url('../fonts/BWT Cyr - Subline.ttf') format('truetype');
   font-display: swap;
 }
 @font-face {
   font-family: 'Cyr Copy';
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/BWT Cyr-BoldCopyHeadline.ttf') format('truetype');
+  src: url('../fonts/BWT Cyr - Copy Headline.ttf') format('truetype');
   font-display: swap;
 }
 .residence {
